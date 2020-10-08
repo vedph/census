@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <Authors>Daniele Fusi</Authors>
+    <Company>Fusi</Company>
+    <Product>Census</Product>
+    <Description>Census Entity Framework components.</Description>
+    <Copyright>by Daniele Fusi</Copyright>
+    <NeutralLanguage>en-US</NeutralLanguage>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="3.2.2" />
+  </ItemGroup>
+
+</Project>

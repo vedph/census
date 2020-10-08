@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <Authors>Daniele Fusi</Authors>
+    <Company>Fusi</Company>
+    <Product>Census</Product>
+    <Description>Census importer.</Description>
+    <Copyright>by Daniele Fusi</Copyright>
+    <NeutralLanguage>en-US</NeutralLanguage>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Assets\Schema.sql" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Assets\Schema.sql" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CsvHelper" Version="15.0.6" />
+    <PackageReference Include="Fusi.Tools" Version="1.1.15" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Census.Ef\Census.Ef.csproj" />
+  </ItemGroup>
+
+</Project>

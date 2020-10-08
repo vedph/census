@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <Authors>Daniele Fusi</Authors>
+    <Company>Fusi</Company>
+    <Product>Census</Product>
+    <Description>Census MySql components.</Description>
+    <Copyright>by Daniele Fusi</Copyright>
+    <NeutralLanguage>en-US</NeutralLanguage>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MySql.Data" Version="8.0.21" />
+  </ItemGroup>
+
+</Project>

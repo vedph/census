@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "CensusTool": {
+      "commandName": "Project",
+      "commandLineArgs": "import C:\\Users\\Dfusi\\Desktop\\Census\\ *.tsv census"
+    }
+  }
+}
