@@ -233,10 +233,11 @@ namespace Census.Import
                 {
                     prevCompany = new EfCompany
                     {
-                        Name = name
+                        Name = prevName
                     };
                     db.Companies.Add(prevCompany);
                 }
+                LogMaxLengthErrors(prevCompany);
                 company.Previous = prevCompany;
             }
 

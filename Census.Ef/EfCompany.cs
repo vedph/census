@@ -7,7 +7,7 @@ namespace Census.Ef
         public int Id { get; set; }
         public int? PreviousId { get; set; }
 
-        [MaxLength(50)]
+        [MaxLength(100)]
         public string Name { get; set; }
 
         public EfCompany Previous { get; set; }

@@ -23,6 +23,7 @@ Sample:
 Tip: to truncate tables without deleting the DB:
 
 ```sql
+SET FOREIGN_KEY_CHECKS = 0;
 TRUNCATE TABLE actCategory;
 TRUNCATE TABLE actPartner;
 TRUNCATE TABLE actProfession;
@@ -39,4 +40,17 @@ TRUNCATE TABLE family;
 TRUNCATE TABLE person;
 TRUNCATE TABLE place;
 TRUNCATE TABLE profession;
+SET FOREIGN_KEY_CHECKS = 1;
+```
+
+Some handy counts:
+
+```sql
+SELECT COUNT(*) FROM archive AS archive_count;
+SELECT COUNT(*) FROM book AS book_count;
+SELECT COUNT(*) FROM person AS person_count;
+SELECT COUNT(*) FROM family AS family_count;
+SELECT COUNT(*) FROM place AS place_count;
+SELECT COUNT(*) FROM profession AS profession_count;
+SELECT COUNT(*) FROM category AS category_count;
 ```
