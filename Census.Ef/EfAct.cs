@@ -14,6 +14,8 @@ namespace Census.Ef
 
         [MaxLength(200)]
         public string Label { get; set; }
+        [MaxLength(200)]
+        public string Labelx { get; set; }
 
         [MaxLength(1000)]
         public string Note { get; set; }
