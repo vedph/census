@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Globalization;
 using Census.Core;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace Census.MySql
 {
@@ -101,6 +103,20 @@ namespace Census.MySql
             }
         }
 
+        private void AppendActInSql(IList<int> ids, string table, string fk,
+            StringBuilder sb)
+        {
+            sb.Append("EXISTS(SELECT ").Append(ETP(table, "actId"))
+                .Append(" FROM ").Append(ET(table))
+                .Append(" WHERE ").Append(ETP(table, "actId"))
+                .Append('=')
+                .Append(ETP("act", "id"))
+                .Append(" AND ").Append(ETP(table, fk)).Append(" IN(")
+                .Append(string.Join(",",
+                    ids.Select(n => n.ToString(CultureInfo.InvariantCulture))))
+                .Append("))");
+        }
+
         private string BuildWhereSql(ActFilter filter)
         {
             StringBuilder sb = new StringBuilder();
@@ -170,36 +186,21 @@ namespace Census.MySql
             if (filter.CategoryIds?.Count > 0)
             {
                 if (sb.Length > 0) sb.Append(" AND ");
-                sb.Append(ETP("actCategory", "categoryId"))
-                  .Append(" IN(")
-                  .Append(string.Join(",",
-                    filter.CategoryIds.Select(n =>
-                        n.ToString(CultureInfo.InvariantCulture))))
-                  .Append(')');
+                AppendActInSql(filter.CategoryIds, "actCategory", "categoryId", sb);
             }
 
             // professions
             if (filter.ProfessionIds?.Count > 0)
             {
                 if (sb.Length > 0) sb.Append(" AND ");
-                sb.Append(ETP("actProfession", "professionId"))
-                  .Append(" IN(")
-                  .Append(string.Join(",",
-                    filter.ProfessionIds.Select(n =>
-                        n.ToString(CultureInfo.InvariantCulture))))
-                  .Append(')');
+                AppendActInSql(filter.CategoryIds, "actProfession", "professionId", sb);
             }
 
             // partners
             if (filter.PartnerIds?.Count > 0)
             {
                 if (sb.Length > 0) sb.Append(" AND ");
-                sb.Append(ETP("actPartner", "partnerId"))
-                  .Append(" IN(")
-                  .Append(string.Join(",",
-                    filter.PartnerIds.Select(n =>
-                        n.ToString(CultureInfo.InvariantCulture))))
-                  .Append(')');
+                AppendActInSql(filter.CategoryIds, "actPartner", "partnerId", sb);
             }
 
             sb.Insert(0, "WHERE" + Environment.NewLine);
@@ -344,7 +345,7 @@ namespace Census.MySql
               .Append(ET(table))
               .Append(" WHERE ")
               .Append(ETP(table, field))
-              .Append(" LIKE '%").Append(SqlHelper.SqlEncode(filter))
+              .Append(" LIKE '%").Append(SqlHelper.SqlEncode(filterx))
               .Append("%' ORDER BY ").Append(ET(field))
               .Append(" LIMIT ").Append(top).AppendLine(";");
             return sb.ToString();
