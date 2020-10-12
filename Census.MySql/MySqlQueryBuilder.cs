@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Globalization;
 using Census.Core;
-using System.Collections;
 using System.Collections.Generic;
 
 namespace Census.MySql

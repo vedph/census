@@ -60,5 +60,23 @@ namespace CensusSqlDemo
                 MessageBox.Show(ex.Message, Title, MessageBoxButton.OK);
             }
         }
+
+        private void OnGenerateLookupClick(object sender, RoutedEventArgs e)
+        {
+            if (_cboTables.SelectedIndex == -1) return;
+            try
+            {
+                _txtSql.Text = _sqlBuilder.BuildLookup(
+                    (DataEntityType)_cboTables.SelectedIndex,
+                    _txtLookupFilter.Text,
+                    int.Parse(_txtLookupLimit.Text, CultureInfo.InvariantCulture));
+                _tabs.SelectedItem = _tabSql;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.ToString());
+                MessageBox.Show(ex.Message, Title, MessageBoxButton.OK);
+            }
+        }
     }
 }

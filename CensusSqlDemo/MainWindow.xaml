@@ -76,7 +76,47 @@
                 <Button Grid.Row="12" Grid.Column="1" Margin="4" Click="OnGenerateSearchClick">Generate</Button>
             </Grid>
         </TabItem>
-        <TabItem Header="Lookup" x:Name="_tabLookup"></TabItem>
+        <TabItem Header="Lookup" x:Name="_tabLookup">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <Label>table</Label>
+                <ComboBox Grid.Column="1" Margin="4" Name="_cboTables"
+                         SelectedIndex="0">
+                    <ListBoxItem>act</ListBoxItem>
+                    <ListBoxItem>act type</ListBoxItem>
+                    <ListBoxItem>act subtype</ListBoxItem>
+                    <ListBoxItem>archive</ListBoxItem>
+                    <ListBoxItem>book</ListBoxItem>
+                    <ListBoxItem>book type</ListBoxItem>
+                    <ListBoxItem>book subtype</ListBoxItem>
+                    <ListBoxItem>category</ListBoxItem>
+                    <ListBoxItem>company</ListBoxItem>
+                    <ListBoxItem>family</ListBoxItem>
+                    <ListBoxItem>person</ListBoxItem>
+                    <ListBoxItem>place</ListBoxItem>
+                    <ListBoxItem>profession</ListBoxItem>
+                </ComboBox>
+                <Label Grid.Row="1">filter</Label>
+                <TextBox Grid.Row="1" Grid.Column="1" Margin="4" Name="_txtLookupFilter"/>
+                <Label Grid.Row="2">top</Label>
+                <TextBox Grid.Row="2" Grid.Column="1" Margin="4" Name="_txtLookupLimit"
+                         HorizontalAlignment="Left" Width="60"
+                         InputMethod.InputScope="Number" Text="10" />
+
+                <Button Grid.Row="4" Grid.Column="1" Margin="4"
+                        Click="OnGenerateLookupClick">Generate</Button>
+            </Grid>
+        </TabItem>
         <TabItem Header="SQL" x:Name="_tabSql">
             <Grid>
                 <Grid.RowDefinitions>
