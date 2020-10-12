@@ -31,6 +31,7 @@ CREATE TABLE `act` (
   `companyId` int DEFAULT NULL,
   `placeId` int DEFAULT NULL,
   `label` varchar(200) NOT NULL,
+  `labelx` varchar(200) NOT NULL,
   `note` varchar(1000) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `family_act_idx` (`familyId`),
@@ -39,13 +40,14 @@ CREATE TABLE `act` (
   KEY `place_act_idx` (`placeId`),
   KEY `type_act_idx` (`typeId`),
   KEY `subtype_act_idx` (`subtypeId`),
+  KEY `ix_act_labelx` (`labelx`),
   CONSTRAINT `book_act` FOREIGN KEY (`bookId`) REFERENCES `book` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `company_act` FOREIGN KEY (`companyId`) REFERENCES `company` (`id`) ON DELETE SET NULL ON UPDATE CASCADE,
   CONSTRAINT `family_act` FOREIGN KEY (`familyId`) REFERENCES `family` (`id`) ON DELETE SET NULL ON UPDATE CASCADE,
   CONSTRAINT `place_act` FOREIGN KEY (`placeId`) REFERENCES `place` (`id`) ON DELETE SET NULL ON UPDATE CASCADE,
   CONSTRAINT `subtype_act` FOREIGN KEY (`subtypeId`) REFERENCES `actSubtype` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `type_act` FOREIGN KEY (`typeId`) REFERENCES `actType` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=1976 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3080 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -112,10 +114,12 @@ CREATE TABLE `actSubtype` (
   `id` int NOT NULL AUTO_INCREMENT,
   `actTypeId` int NOT NULL,
   `name` varchar(100) NOT NULL,
+  `namex` varchar(100) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `type_subtype_idx` (`actTypeId`),
+  KEY `ix_actsubtype_namex` (`namex`),
   CONSTRAINT `type_subtype` FOREIGN KEY (`actTypeId`) REFERENCES `actType` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=55 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=137 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -128,8 +132,10 @@ DROP TABLE IF EXISTS `actType`;
 CREATE TABLE `actType` (
   `id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8;
+  `namex` varchar(50) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `ix_acttype_namex` (`namex`)
+) ENGINE=InnoDB AUTO_INCREMENT=46 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -142,9 +148,10 @@ DROP TABLE IF EXISTS `archive`;
 CREATE TABLE `archive` (
   `id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(100) NOT NULL,
+  `namex` varchar(100) NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `ix_archive_name` (`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8;
+  KEY `ix_archive_namex` (`namex`)
+) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -162,7 +169,9 @@ CREATE TABLE `book` (
   `writePlaceId` int DEFAULT NULL,
   `writerId` int DEFAULT NULL,
   `location` varchar(100) DEFAULT NULL,
+  `locationx` varchar(100) NOT NULL,
   `description` varchar(1000) DEFAULT NULL,
+  `descriptionx` varchar(1000) DEFAULT NULL,
   `incipit` varchar(3000) DEFAULT NULL,
   `startYear` smallint NOT NULL,
   `endYear` smallint NOT NULL,
@@ -175,12 +184,14 @@ CREATE TABLE `book` (
   KEY `person_book_idx` (`writerId`),
   KEY `booktype_book_idx` (`typeId`),
   KEY `booksubtype_book_idx` (`subtypeId`),
+  KEY `book_locationx_idx` (`locationx`) /*!80000 INVISIBLE */,
+  KEY `book_descriptionx_idx` (`descriptionx`),
   CONSTRAINT `archive_book` FOREIGN KEY (`archiveId`) REFERENCES `archive` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `booksubtype_book` FOREIGN KEY (`subtypeId`) REFERENCES `bookSubtype` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `booktype_book` FOREIGN KEY (`typeId`) REFERENCES `bookType` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `person_book` FOREIGN KEY (`writerId`) REFERENCES `person` (`id`) ON DELETE SET NULL ON UPDATE CASCADE,
   CONSTRAINT `place_book` FOREIGN KEY (`writePlaceId`) REFERENCES `place` (`id`) ON DELETE SET NULL ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=1932 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2996 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -194,10 +205,12 @@ CREATE TABLE `bookSubtype` (
   `id` int NOT NULL AUTO_INCREMENT,
   `bookTypeId` int NOT NULL,
   `name` varchar(200) NOT NULL,
+  `namex` varchar(200) NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `booktype_booksubtype_idx` (`bookTypeId`),
+  KEY `booktype_booksubtype_idx` (`bookTypeId`) /*!80000 INVISIBLE */,
+  KEY `ix_booksubtype_namex` (`namex`),
   CONSTRAINT `booktype_booksubtype` FOREIGN KEY (`bookTypeId`) REFERENCES `bookType` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=549 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=733 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -210,8 +223,10 @@ DROP TABLE IF EXISTS `bookType`;
 CREATE TABLE `bookType` (
   `id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8;
+  `namex` varchar(50) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `ix_booktype_namex` (`namex`)
+) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -224,9 +239,10 @@ DROP TABLE IF EXISTS `category`;
 CREATE TABLE `category` (
   `id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL,
+  `namex` varchar(50) NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `ix_category_name` (`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8;
+  KEY `ix_category_namex` (`namex`)
+) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -239,10 +255,11 @@ DROP TABLE IF EXISTS `company`;
 CREATE TABLE `company` (
   `id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(100) NOT NULL,
+  `namex` varchar(100) NOT NULL,
   `previousId` int DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `ix_company_name` (`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=66 DEFAULT CHARSET=utf8;
+  KEY `ix_company_namex` (`namex`)
+) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -255,8 +272,10 @@ DROP TABLE IF EXISTS `family`;
 CREATE TABLE `family` (
   `id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=282 DEFAULT CHARSET=utf8;
+  `namex` varchar(50) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `family_namex_ix` (`namex`)
+) ENGINE=InnoDB AUTO_INCREMENT=307 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -269,9 +288,10 @@ DROP TABLE IF EXISTS `person`;
 CREATE TABLE `person` (
   `id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(100) NOT NULL,
+  `namex` varchar(100) NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `ix_person_name` (`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=314 DEFAULT CHARSET=utf8;
+  KEY `ix_person_namex` (`namex`)
+) ENGINE=InnoDB AUTO_INCREMENT=508 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -284,9 +304,10 @@ DROP TABLE IF EXISTS `place`;
 CREATE TABLE `place` (
   `id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL,
+  `namex` varchar(50) NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `ix_place_name` (`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=127 DEFAULT CHARSET=utf8;
+  KEY `ix_place_namex` (`namex`)
+) ENGINE=InnoDB AUTO_INCREMENT=183 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -299,9 +320,10 @@ DROP TABLE IF EXISTS `profession`;
 CREATE TABLE `profession` (
   `id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL,
+  `namex` varchar(50) NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `ix_profession_name` (`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=61 DEFAULT CHARSET=utf8;
+  KEY `ix_profession_namex` (`namex`)
+) ENGINE=InnoDB AUTO_INCREMENT=63 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -313,4 +335,4 @@ CREATE TABLE `profession` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-10-08 21:57:03
+-- Dump completed on 2020-10-12 19:53:41

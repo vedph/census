@@ -17,7 +17,8 @@ namespace Census.Import
     public sealed class CsvImporter
     {
         private readonly string _connectionString;
-        private readonly ITextFilter _filter;
+        private readonly ITextFilter _displayFilter;
+        private readonly ITextFilter _indexFilter;
         private readonly Regex _yearRegex;
         private readonly char[] _otherSeps;
 
@@ -40,7 +41,11 @@ namespace Census.Import
         {
             _connectionString = connectionString ??
                 throw new ArgumentNullException(nameof(connectionString));
-            _filter = new WhitespaceTextFilter();
+            _displayFilter = new WhitespaceTextFilter();
+            _indexFilter = new StandardTextFilter
+            {
+                PreserveDigits = true
+            };
 
             _yearRegex = new Regex(@"^\s*(\d+)\s*$");
 
@@ -81,12 +86,14 @@ namespace Census.Import
         {
             if (name == null) return null;
 
-            EfArchive archive = db.Archives.FirstOrDefault(a => a.Name == name);
+            string namex = _indexFilter.Apply(name);
+            EfArchive archive = db.Archives.FirstOrDefault(a => a.Namex == namex);
             if (archive == null)
             {
                 archive = new EfArchive
                 {
-                    Name = name
+                    Name = name,
+                    Namex = namex
                 };
                 db.Archives.Add(archive);
             }
@@ -99,14 +106,16 @@ namespace Census.Import
         {
             if (location == null) return null;
 
+            string locationx = _indexFilter.Apply(location);
             EfBook book = db.Books.FirstOrDefault(b => b.ArchiveId == archiveId
-                && b.Location == location);
+                && b.Locationx == location);
             if (book == null)
             {
                 book = new EfBook
                 {
                     ArchiveId = archiveId,
-                    Location = location
+                    Location = location,
+                    Locationx = locationx
                 };
                 db.Books.Add(book);
             }
@@ -118,12 +127,14 @@ namespace Census.Import
         {
             if (name == null) return null;
 
-            EfFamily family = db.Families.FirstOrDefault(f => f.Name == name);
+            string namex = _indexFilter.Apply(name);
+            EfFamily family = db.Families.FirstOrDefault(f => f.Namex == namex);
             if (family == null)
             {
                 family = new EfFamily
                 {
-                    Name = name
+                    Name = name,
+                    Namex = namex
                 };
                 db.Families.Add(family);
             }
@@ -136,12 +147,14 @@ namespace Census.Import
         {
             if (name == null) return null;
 
-            EfActType type = db.ActTypes.FirstOrDefault(t => t.Name == name);
+            string namex = _indexFilter.Apply(name);
+            EfActType type = db.ActTypes.FirstOrDefault(t => t.Namex == namex);
             if (type == null)
             {
                 type = new EfActType
                 {
-                    Name = name
+                    Name = name,
+                    Namex = namex
                 };
                 db.ActTypes.Add(type);
             }
@@ -155,13 +168,15 @@ namespace Census.Import
         {
             if (name == null) return null;
 
+            string namex = _indexFilter.Apply(name);
             EfActSubtype sub = db.ActSubtypes.FirstOrDefault(
-                s => s.ActTypeId == actTypeId && s.Name == name);
+                s => s.ActTypeId == actTypeId && s.Namex == namex);
             if (sub == null)
             {
                 sub = new EfActSubtype
                 {
                     Name = name,
+                    Namex = namex,
                     ActTypeId = actTypeId
                 };
                 db.ActSubtypes.Add(sub);
@@ -175,12 +190,14 @@ namespace Census.Import
         {
             if (name == null) return null;
 
-            EfBookType type = db.BookTypes.FirstOrDefault(t => t.Name == name);
+            string namex = _indexFilter.Apply(name);
+            EfBookType type = db.BookTypes.FirstOrDefault(t => t.Namex == namex);
             if (type == null)
             {
                 type = new EfBookType
                 {
-                    Name = name
+                    Name = name,
+                    Namex = namex
                 };
                 db.BookTypes.Add(type);
             }
@@ -194,13 +211,15 @@ namespace Census.Import
         {
             if (name == null) return null;
 
+            string namex = _indexFilter.Apply(name);
             EfBookSubtype sub = db.BookSubtypes.FirstOrDefault(
-                s => s.BookTypeId == bookTypeId && s.Name == name);
+                s => s.BookTypeId == bookTypeId && s.Namex == namex);
             if (sub == null)
             {
                 sub = new EfBookSubtype
                 {
                     Name = name,
+                    Namex = namex,
                     BookTypeId = bookTypeId
                 };
                 db.BookSubtypes.Add(sub);
@@ -215,25 +234,29 @@ namespace Census.Import
         {
             if (name == null) return null;
 
-            EfCompany company = db.Companies.FirstOrDefault(c => c.Name == name);
+            string namex = _indexFilter.Apply(name);
+            EfCompany company = db.Companies.FirstOrDefault(c => c.Namex == namex);
             if (company == null)
             {
                 company = new EfCompany
                 {
-                    Name = name
+                    Name = name,
+                    Namex = namex
                 };
                 db.Companies.Add(company);
             }
 
             if (!string.IsNullOrEmpty(prevName))
             {
+                namex = _indexFilter.Apply(prevName);
                 EfCompany prevCompany =
-                    db.Companies.FirstOrDefault(c => c.Name == prevName);
+                    db.Companies.FirstOrDefault(c => c.Namex == namex);
                 if (prevCompany == null)
                 {
                     prevCompany = new EfCompany
                     {
-                        Name = prevName
+                        Name = prevName,
+                        Namex = namex
                     };
                     db.Companies.Add(prevCompany);
                 }
@@ -249,12 +272,14 @@ namespace Census.Import
         {
             if (name == null) return null;
 
-            EfPlace place = db.Places.FirstOrDefault(c => c.Name == name);
+            string namex = _indexFilter.Apply(name);
+            EfPlace place = db.Places.FirstOrDefault(c => c.Namex == namex);
             if (place == null)
             {
                 place = new EfPlace
                 {
-                    Name = name
+                    Name = name,
+                    Namex = namex
                 };
                 db.Places.Add(place);
             }
@@ -267,12 +292,14 @@ namespace Census.Import
         {
             if (name == null) return null;
 
-            EfPerson person = db.Persons.FirstOrDefault(p => p.Name == name);
+            string namex = _indexFilter.Apply(name);
+            EfPerson person = db.Persons.FirstOrDefault(p => p.Namex == namex);
             if (person == null)
             {
                 person = new EfPerson
                 {
-                    Name = name
+                    Name = name,
+                    Namex = namex
                 };
                 db.Persons.Add(person);
             }
@@ -292,12 +319,14 @@ namespace Census.Import
                 name = name[0..^1];
             }
 
-            EfCategory category = db.Categories.FirstOrDefault(c => c.Name == name);
+            string namex = _indexFilter.Apply(name);
+            EfCategory category = db.Categories.FirstOrDefault(c => c.Namex == namex);
             if (category == null)
             {
                 category = new EfCategory
                 {
-                    Name = name
+                    Name = name,
+                    Namex = namex
                 };
             }
 
@@ -317,13 +346,15 @@ namespace Census.Import
                 name = name[0..^1];
             }
 
+            string namex = _indexFilter.Apply(name);
             EfProfession profession =
-                db.Professions.FirstOrDefault(c => c.Name == name);
+                db.Professions.FirstOrDefault(c => c.Namex == namex);
             if (profession == null)
             {
                 profession = new EfProfession
                 {
-                    Name = name
+                    Name = name,
+                    Namex = namex
                 };
             }
 
@@ -359,7 +390,15 @@ namespace Census.Import
 
         private string Filter(string name, string defValue)
         {
-            name = _filter.Apply(name);
+            name = _displayFilter.Apply(name);
+            if (string.IsNullOrEmpty(name) || name == "?")
+                return defValue;
+            return name;
+        }
+
+        private string Filterx(string name, string defValue)
+        {
+            name = _indexFilter.Apply(name);
             if (string.IsNullOrEmpty(name) || name == "?")
                 return defValue;
             return name;
@@ -418,6 +457,7 @@ namespace Census.Import
                 book.Writer =
                     GetPerson(Filter(record.BookWriter, null), db);
                 book.Description = Filter(record.BookDescription, null);
+                book.Descriptionx = Filterx(record.BookDescription, null);
                 book.Incipit = Filter(record.BookIncipit, null);
                 book.StartYear = ParseYear(record.BookStartYear);
                 book.EndYear = ParseYear(record.BookEndYear);
@@ -429,7 +469,8 @@ namespace Census.Import
                 // act
                 EfAct act = new EfAct
                 {
-                    Label = _filter.Apply(Filter(record.Label, null)),
+                    Label = Filter(record.Label, null),
+                    Labelx = Filterx(record.Label, null),
                     Book = book,
                     Type = actType,
                     Subtype = GetActSubtype(

@@ -10,6 +10,9 @@ namespace Census.Ef
         [MaxLength(50)]
         public string Name { get; set; }
 
+        [MaxLength(50)]
+        public string Namex { get; set; }
+
         public List<EfBookSubtype> BookSubtypes { get; set; }
 
         public override string ToString()

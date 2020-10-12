@@ -123,6 +123,9 @@ namespace Census.Ef
             modelBuilder.Entity<EfCategory>().Property(c => c.Name)
                 .IsUnicode()
                 .IsRequired();
+            modelBuilder.Entity<EfCategory>().Property(c => c.Namex)
+                .IsUnicode()
+                .IsRequired();
 
             // Company
             modelBuilder.Entity<EfCompany>().ToTable("company");
@@ -130,6 +133,9 @@ namespace Census.Ef
                 .IsRequired()
                 .UseMySqlIdentityColumn();
             modelBuilder.Entity<EfCompany>().Property(c => c.Name)
+                .IsUnicode()
+                .IsRequired();
+            modelBuilder.Entity<EfCompany>().Property(c => c.Namex)
                 .IsUnicode()
                 .IsRequired();
             modelBuilder.Entity<EfCompany>().Property(c => c.PreviousId)
@@ -145,6 +151,9 @@ namespace Census.Ef
             modelBuilder.Entity<EfFamily>().Property(f => f.Name)
                 .IsUnicode()
                 .IsRequired();
+            modelBuilder.Entity<EfFamily>().Property(f => f.Namex)
+                .IsUnicode()
+                .IsRequired();
 
             // Person
             modelBuilder.Entity<EfPerson>().ToTable("person");
@@ -152,6 +161,9 @@ namespace Census.Ef
                 .IsRequired()
                 .UseMySqlIdentityColumn();
             modelBuilder.Entity<EfPerson>().Property(p => p.Name)
+                .IsUnicode()
+                .IsRequired();
+            modelBuilder.Entity<EfPerson>().Property(p => p.Namex)
                 .IsUnicode()
                 .IsRequired();
 
@@ -163,6 +175,9 @@ namespace Census.Ef
             modelBuilder.Entity<EfPlace>().Property(p => p.Name)
                 .IsUnicode()
                 .IsRequired();
+            modelBuilder.Entity<EfPlace>().Property(p => p.Namex)
+                .IsUnicode()
+                .IsRequired();
 
             // Profession
             modelBuilder.Entity<EfProfession>().ToTable("profession");
@@ -170,6 +185,9 @@ namespace Census.Ef
                 .IsRequired()
                 .UseMySqlIdentityColumn();
             modelBuilder.Entity<EfProfession>().Property(p => p.Name)
+                .IsUnicode()
+                .IsRequired();
+            modelBuilder.Entity<EfProfession>().Property(p => p.Namex)
                 .IsUnicode()
                 .IsRequired();
 
@@ -181,6 +199,9 @@ namespace Census.Ef
             modelBuilder.Entity<EfArchive>().Property(p => p.Name)
                 .IsUnicode()
                 .IsRequired();
+            modelBuilder.Entity<EfArchive>().Property(p => p.Namex)
+                .IsUnicode()
+                .IsRequired();
 
             // BookType
             modelBuilder.Entity<EfBookType>().ToTable("bookType");
@@ -188,6 +209,9 @@ namespace Census.Ef
                 .IsRequired()
                 .UseMySqlIdentityColumn();
             modelBuilder.Entity<EfBookType>().Property(t => t.Name)
+                .IsUnicode()
+                .IsRequired();
+            modelBuilder.Entity<EfBookType>().Property(t => t.Namex)
                 .IsUnicode()
                 .IsRequired();
 
@@ -199,6 +223,9 @@ namespace Census.Ef
             modelBuilder.Entity<EfBookSubtype>().Property(s => s.Name)
                 .IsUnicode()
                 .IsRequired();
+            modelBuilder.Entity<EfBookSubtype>().Property(s => s.Namex)
+                .IsUnicode()
+                .IsRequired();
             modelBuilder.Entity<EfBookSubtype>().HasOne(s => s.BookType)
                 .WithMany(t => t.BookSubtypes);
 
@@ -208,7 +235,9 @@ namespace Census.Ef
                 .IsRequired()
                 .UseMySqlIdentityColumn();
             modelBuilder.Entity<EfBook>().Property(b => b.Location).IsUnicode();
+            modelBuilder.Entity<EfBook>().Property(b => b.Locationx).IsUnicode();
             modelBuilder.Entity<EfBook>().Property(b => b.Description).IsUnicode();
+            modelBuilder.Entity<EfBook>().Property(b => b.Descriptionx).IsUnicode();
             modelBuilder.Entity<EfBook>().Property(b => b.Incipit).IsUnicode();
             modelBuilder.Entity<EfBook>().Property(b => b.StartYear)
                 .IsRequired();
@@ -234,6 +263,9 @@ namespace Census.Ef
             modelBuilder.Entity<EfActType>().Property(t => t.Name)
                 .IsUnicode()
                 .IsRequired();
+            modelBuilder.Entity<EfActType>().Property(t => t.Namex)
+                .IsUnicode()
+                .IsRequired();
 
             // ActSubtype
             modelBuilder.Entity<EfActSubtype>().ToTable("actSubtype");
@@ -241,6 +273,9 @@ namespace Census.Ef
                 .IsRequired()
                 .UseMySqlIdentityColumn();
             modelBuilder.Entity<EfActSubtype>().Property(s => s.Name)
+                .IsUnicode()
+                .IsRequired();
+            modelBuilder.Entity<EfActSubtype>().Property(s => s.Namex)
                 .IsUnicode()
                 .IsRequired();
             modelBuilder.Entity<EfActSubtype>().HasOne(s => s.ActType)
@@ -252,6 +287,9 @@ namespace Census.Ef
                 .IsRequired()
                 .UseMySqlIdentityColumn();
             modelBuilder.Entity<EfAct>().Property(a => a.Label)
+                .IsUnicode()
+                .IsRequired();
+            modelBuilder.Entity<EfAct>().Property(a => a.Labelx)
                 .IsUnicode()
                 .IsRequired();
 

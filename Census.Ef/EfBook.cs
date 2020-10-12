@@ -14,11 +14,18 @@ namespace Census.Ef
         [MaxLength(100)]
         public string Location { get; set; }
 
+        [MaxLength(100)]
+        public string Locationx { get; set; }
+
         [MaxLength(1000)]
         public string Description { get; set; }
 
+        [MaxLength(1000)]
+        public string Descriptionx { get; set; }
+
         [MaxLength(3000)]
         public string Incipit { get; set; }
+
         public short StartYear { get; set; }
         public short EndYear { get; set; }
 
