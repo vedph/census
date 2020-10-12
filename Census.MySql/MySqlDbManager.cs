@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
+using Census.Core;
 using MySql.Data.MySqlClient;
 
 namespace Census.MySql

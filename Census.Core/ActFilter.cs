@@ -1,7 +1,7 @@
 ﻿using Fusi.Tools.Data;
 using System.Collections.Generic;
 
-namespace Census.MySql
+namespace Census.Core
 {
     public sealed class ActFilter : PagingOptions
     {

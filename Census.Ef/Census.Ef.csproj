@@ -11,7 +11,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="3.2.2" />
+    <PackageReference Include="MySql.Data.EntityFrameworkCore" Version="8.0.21" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Census.Core\Census.Core.csproj" />
+    <ProjectReference Include="..\Census.MySql\Census.MySql.csproj" />
   </ItemGroup>
 
 </Project>

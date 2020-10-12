@@ -1,4 +1,4 @@
-﻿namespace Census.MySql
+﻿namespace Census.Core
 {
     /// <summary>
     /// Interface for SQL code tokens helper functions.

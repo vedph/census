@@ -1,7 +1,6 @@
-﻿using Fusi.Tools.Data;
-using System;
+﻿using System;
 
-namespace Census.MySql
+namespace Census.Core
 {
     public interface ISqlQueryBuilder
     {
@@ -11,7 +10,7 @@ namespace Census.MySql
         /// </summary>
         /// <param name="filter">The acts filter.</param>
         /// <returns>SQL code for both page and total.</returns>
-        Tuple<string, string> BuildGetActs(ActFilter filter);
+        Tuple<string, string> BuildActSearch(ActFilter filter);
 
         string BuildLookup(DataEntityType type, string filter, int top);
     }

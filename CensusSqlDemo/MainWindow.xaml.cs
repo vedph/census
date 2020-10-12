@@ -50,7 +50,7 @@ namespace CensusSqlDemo
         {
             try
             {
-                var t = _sqlBuilder.BuildGetActs(GetActFilter());
+                var t = _sqlBuilder.BuildActSearch(GetActFilter());
                 _txtSql.Text = t.Item1 + "\r\n\r\n" + t.Item2;
                 _tabs.SelectedItem = _tabSql;
             }

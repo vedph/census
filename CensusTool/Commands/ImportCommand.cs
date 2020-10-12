@@ -1,4 +1,5 @@
-﻿using Census.Import;
+﻿using Census.Core;
+using Census.Import;
 using Census.MySql;
 using Fusi.Tools;
 using Microsoft.Extensions.CommandLineUtils;

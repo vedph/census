@@ -231,7 +231,7 @@ namespace Census.MySql
         /// SQL code for both page and total.
         /// </returns>
         /// <exception cref="ArgumentNullException">filter</exception>
-        public Tuple<string, string> BuildGetActs(ActFilter filter)
+        public Tuple<string, string> BuildActSearch(ActFilter filter)
         {
             if (filter == null)
                 throw new ArgumentNullException(nameof(filter));

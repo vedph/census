@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Census.MySql
+namespace Census.Core
 {
     /// <summary>
     /// General-purpose RDBMS database manager.

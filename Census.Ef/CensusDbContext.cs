@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using MySql.Data.EntityFrameworkCore.Extensions;
 
 namespace Census.Ef
 {
@@ -56,7 +57,7 @@ namespace Census.Ef
             {
                 default:
                     return new DbContextOptionsBuilder<CensusDbContext>()
-                        .UseMySql(connectionString)
+                        .UseMySQL(connectionString)
                         .Options;
                     //return new DbContextOptionsBuilder<BiblioDbContext>()
                     //    .UseSqlServer(connectionString)
@@ -90,7 +91,7 @@ namespace Census.Ef
                 // note that these are fake credentials for development.
                 // in production they would be replaced with environment data,
                 // but in any case in production we would not hit this code
-                optionsBuilder.UseMySql(
+                optionsBuilder.UseMySQL(
                     "Server=localhost;Database=census;Uid=root;Pwd=mysql;");
             }
             base.OnConfiguring(optionsBuilder);
@@ -119,7 +120,8 @@ namespace Census.Ef
             modelBuilder.Entity<EfCategory>().ToTable("category");
             modelBuilder.Entity<EfCategory>().Property(c => c.Id)
                 .IsRequired()
-                .UseMySqlIdentityColumn();
+                //.UseMySqlIdentityColumn();
+                .UseMySQLAutoIncrementColumn("id");
             modelBuilder.Entity<EfCategory>().Property(c => c.Name)
                 .IsUnicode()
                 .IsRequired();
@@ -131,7 +133,7 @@ namespace Census.Ef
             modelBuilder.Entity<EfCompany>().ToTable("company");
             modelBuilder.Entity<EfCompany>().Property(c => c.Id)
                 .IsRequired()
-                .UseMySqlIdentityColumn();
+                .UseMySQLAutoIncrementColumn("id");
             modelBuilder.Entity<EfCompany>().Property(c => c.Name)
                 .IsUnicode()
                 .IsRequired();
@@ -147,7 +149,7 @@ namespace Census.Ef
             modelBuilder.Entity<EfFamily>().ToTable("family");
             modelBuilder.Entity<EfFamily>().Property(f => f.Id)
                 .IsRequired()
-                .UseMySqlIdentityColumn();
+                .UseMySQLAutoIncrementColumn("id");
             modelBuilder.Entity<EfFamily>().Property(f => f.Name)
                 .IsUnicode()
                 .IsRequired();
@@ -159,7 +161,7 @@ namespace Census.Ef
             modelBuilder.Entity<EfPerson>().ToTable("person");
             modelBuilder.Entity<EfPerson>().Property(p => p.Id)
                 .IsRequired()
-                .UseMySqlIdentityColumn();
+                .UseMySQLAutoIncrementColumn("id");
             modelBuilder.Entity<EfPerson>().Property(p => p.Name)
                 .IsUnicode()
                 .IsRequired();
@@ -171,7 +173,7 @@ namespace Census.Ef
             modelBuilder.Entity<EfPlace>().ToTable("place");
             modelBuilder.Entity<EfPlace>().Property(p => p.Id)
                 .IsRequired()
-                .UseMySqlIdentityColumn();
+                .UseMySQLAutoIncrementColumn("id");
             modelBuilder.Entity<EfPlace>().Property(p => p.Name)
                 .IsUnicode()
                 .IsRequired();
@@ -183,7 +185,7 @@ namespace Census.Ef
             modelBuilder.Entity<EfProfession>().ToTable("profession");
             modelBuilder.Entity<EfProfession>().Property(p => p.Id)
                 .IsRequired()
-                .UseMySqlIdentityColumn();
+                .UseMySQLAutoIncrementColumn("id");
             modelBuilder.Entity<EfProfession>().Property(p => p.Name)
                 .IsUnicode()
                 .IsRequired();
@@ -195,7 +197,7 @@ namespace Census.Ef
             modelBuilder.Entity<EfArchive>().ToTable("archive");
             modelBuilder.Entity<EfArchive>().Property(p => p.Id)
                 .IsRequired()
-                .UseMySqlIdentityColumn();
+                .UseMySQLAutoIncrementColumn("id");
             modelBuilder.Entity<EfArchive>().Property(p => p.Name)
                 .IsUnicode()
                 .IsRequired();
@@ -207,7 +209,7 @@ namespace Census.Ef
             modelBuilder.Entity<EfBookType>().ToTable("bookType");
             modelBuilder.Entity<EfBookType>().Property(t => t.Id)
                 .IsRequired()
-                .UseMySqlIdentityColumn();
+                .UseMySQLAutoIncrementColumn("id");
             modelBuilder.Entity<EfBookType>().Property(t => t.Name)
                 .IsUnicode()
                 .IsRequired();
@@ -219,7 +221,7 @@ namespace Census.Ef
             modelBuilder.Entity<EfBookSubtype>().ToTable("bookSubtype");
             modelBuilder.Entity<EfBookSubtype>().Property(s => s.Id)
                 .IsRequired()
-                .UseMySqlIdentityColumn();
+                .UseMySQLAutoIncrementColumn("id");
             modelBuilder.Entity<EfBookSubtype>().Property(s => s.Name)
                 .IsUnicode()
                 .IsRequired();
@@ -233,7 +235,7 @@ namespace Census.Ef
             modelBuilder.Entity<EfBook>().ToTable("book");
             modelBuilder.Entity<EfBook>().Property(b => b.Id)
                 .IsRequired()
-                .UseMySqlIdentityColumn();
+                .UseMySQLAutoIncrementColumn("id");
             modelBuilder.Entity<EfBook>().Property(b => b.Location).IsUnicode();
             modelBuilder.Entity<EfBook>().Property(b => b.Locationx).IsUnicode();
             modelBuilder.Entity<EfBook>().Property(b => b.Description).IsUnicode();
@@ -259,7 +261,7 @@ namespace Census.Ef
             modelBuilder.Entity<EfActType>().ToTable("actType");
             modelBuilder.Entity<EfActType>().Property(t => t.Id)
                 .IsRequired()
-                .UseMySqlIdentityColumn();
+                .UseMySQLAutoIncrementColumn("id");
             modelBuilder.Entity<EfActType>().Property(t => t.Name)
                 .IsUnicode()
                 .IsRequired();
@@ -271,7 +273,7 @@ namespace Census.Ef
             modelBuilder.Entity<EfActSubtype>().ToTable("actSubtype");
             modelBuilder.Entity<EfActSubtype>().Property(s => s.Id)
                 .IsRequired()
-                .UseMySqlIdentityColumn();
+                .UseMySQLAutoIncrementColumn("id");
             modelBuilder.Entity<EfActSubtype>().Property(s => s.Name)
                 .IsUnicode()
                 .IsRequired();
@@ -285,7 +287,7 @@ namespace Census.Ef
             modelBuilder.Entity<EfAct>().ToTable("act");
             modelBuilder.Entity<EfAct>().Property(a => a.Id)
                 .IsRequired()
-                .UseMySqlIdentityColumn();
+                .UseMySQLAutoIncrementColumn("id");
             modelBuilder.Entity<EfAct>().Property(a => a.Label)
                 .IsUnicode()
                 .IsRequired();
