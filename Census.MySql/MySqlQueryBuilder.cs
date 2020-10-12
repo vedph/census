@@ -83,9 +83,9 @@ namespace Census.MySql
               .AppendLine("INNER JOIN archive ON book.archiveId=archive.id")
               .AppendLine("INNER JOIN actType ON act.typeId=actType.id")
               .AppendLine("INNER JOIN actSubtype ON act.subtypeId=actSubtype.id")
-              .AppendLine("INNER JOIN family ON act.familyId=family.id")
-              .AppendLine("INNER JOIN company ON act.companyId=company.id")
-              .AppendLine("INNER JOIN place ON act.placeId=place.id");
+              .AppendLine("LEFT JOIN family ON act.familyId=family.id")
+              .AppendLine("LEFT JOIN company ON act.companyId=company.id")
+              .AppendLine("LEFT JOIN place ON act.placeId=place.id");
         }
 
         private void AppendJoins(ActFilter filter, StringBuilder sb)
@@ -104,7 +104,6 @@ namespace Census.MySql
         private string BuildWhereSql(ActFilter filter)
         {
             StringBuilder sb = new StringBuilder();
-            sb.AppendLine("WHERE");
 
             // archive
             if (filter.ArchiveId != 0)
@@ -115,20 +114,24 @@ namespace Census.MySql
             // book
             if (filter.BookId != 0)
             {
+                if (sb.Length > 0) sb.Append(" AND ");
                 sb.Append(ETP("act", "bookId")).Append('=').Append(filter.BookId);
             }
             if (filter.BookYearMin != 0)
             {
+                if (sb.Length > 0) sb.Append(" AND ");
                 sb.Append(ETP("book", "startYear")).Append(">=").Append(filter.BookYearMin);
             }
             if (filter.BookYearMax != 0)
             {
+                if (sb.Length > 0) sb.Append(" AND ");
                 sb.Append(ETP("book", "endYear")).Append("<=").Append(filter.BookYearMax);
             }
 
             // act
             if (!string.IsNullOrEmpty(filter.Description))
             {
+                if (sb.Length > 0) sb.Append(" AND ");
                 sb.Append(ETP("act", "descriptionx"))
                     .Append(" LIKE '%")
                     .Append(SqlHelper.SqlEncode(filter.Description))
@@ -136,22 +139,27 @@ namespace Census.MySql
             }
             if (filter.ActTypeId != 0)
             {
+                if (sb.Length > 0) sb.Append(" AND ");
                 sb.Append(ETP("act", "typeId")).Append('=').Append(filter.ActTypeId);
             }
             if (filter.FamilyId != 0)
             {
+                if (sb.Length > 0) sb.Append(" AND ");
                 sb.Append(ETP("act", "familyId")).Append('=').Append(filter.FamilyId);
             }
             if (filter.CompanyId != 0)
             {
+                if (sb.Length > 0) sb.Append(" AND ");
                 sb.Append(ETP("act", "companyId")).Append('=').Append(filter.CompanyId);
             }
             if (filter.PlaceId != 0)
             {
+                if (sb.Length > 0) sb.Append(" AND ");
                 sb.Append(ETP("act", "placeId")).Append('=').Append(filter.PlaceId);
             }
             if (!string.IsNullOrEmpty(filter.Label))
             {
+                if (sb.Length > 0) sb.Append(" AND ");
                 sb.Append(ETP("act", "labelx"))
                     .Append(" LIKE '%")
                     .Append(SqlHelper.SqlEncode(filter.Label))
@@ -161,6 +169,7 @@ namespace Census.MySql
             // categories
             if (filter.CategoryIds?.Count > 0)
             {
+                if (sb.Length > 0) sb.Append(" AND ");
                 sb.Append(ETP("actCategory", "categoryId"))
                   .Append(" IN(")
                   .Append(string.Join(",",
@@ -172,6 +181,7 @@ namespace Census.MySql
             // professions
             if (filter.ProfessionIds?.Count > 0)
             {
+                if (sb.Length > 0) sb.Append(" AND ");
                 sb.Append(ETP("actProfession", "professionId"))
                   .Append(" IN(")
                   .Append(string.Join(",",
@@ -183,6 +193,7 @@ namespace Census.MySql
             // partners
             if (filter.PartnerIds?.Count > 0)
             {
+                if (sb.Length > 0) sb.Append(" AND ");
                 sb.Append(ETP("actPartner", "partnerId"))
                   .Append(" IN(")
                   .Append(string.Join(",",
@@ -191,6 +202,8 @@ namespace Census.MySql
                   .Append(')');
             }
 
+            sb.Insert(0, "WHERE" + Environment.NewLine);
+            sb.AppendLine();
             return sb.ToString();
         }
 
@@ -236,8 +249,8 @@ namespace Census.MySql
                 .Append(ETPS("book",
                     "location", "description", "startYear", "endYear", "file"))
                 .AppendLine(",")
-                .Append(ETP("archive", "id", "name"))
-                .AppendLine(",")
+                .Append(ETP("archive", "id")).Append(" AS archiveId").AppendLine(",")
+                .Append(ETP("archive", "name")).Append(" AS archiveName").AppendLine(",")
                 .Append(ETP("actType", "name")).Append(" AS actTypeName").AppendLine(",")
                 .Append(ETP("actSubtype", "name")).Append(" AS actSubtypeName").AppendLine(",")
                 .Append(ETP("family", "name")).Append(" AS familyName").AppendLine(",")
@@ -248,7 +261,7 @@ namespace Census.MySql
                  .Append(ETP("item", "id"))
                  .AppendLine(")");
 
-            // from ... inner join ...
+            // from ... join ...
             sbPage.Append("FROM ").AppendLine(ET("act"));
             AppendJoins(sbPage);
 
