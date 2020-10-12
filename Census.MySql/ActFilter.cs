@@ -15,9 +15,9 @@ namespace Census.MySql
         public int CompanyId { get; set; }
         public int PlaceId { get; set; }
         public string Label { get; set; }
-        public List<int> CategoryIds { get; }
-        public List<int> ProfessionIds { get; }
-        public List<int> PartnerIds { get; }
+        public List<int> CategoryIds { get; set; }
+        public List<int> ProfessionIds { get; set; }
+        public List<int> PartnerIds { get; set; }
 
         public ActFilter()
         {
