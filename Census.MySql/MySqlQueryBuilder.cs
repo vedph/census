@@ -228,18 +228,21 @@ namespace Census.MySql
 
             // fields
             sbPage.AppendLine("SELECT DISTINCT")
-                .AppendLine(ETPS("act",
+                .Append(ETPS("act",
                     "id", "bookId",
                     "typeId", "subtypeId", "familyId", "companyId", "placeId",
                     "label"))
-                .AppendLine(ETPS("book",
+                .AppendLine(",")
+                .Append(ETPS("book",
                     "location", "description", "startYear", "endYear", "file"))
-                .AppendLine(ETP("archive", "id", "name"))
-                .Append(ETP("actType", "name")).AppendLine(" AS actTypeName")
-                .Append(ETP("actSubtype", "name")).AppendLine(" AS actSubtypeName")
-                .Append(ETP("family", "name")).AppendLine(" AS familyName")
-                .Append(ETP("company", "name")).AppendLine(" AS companyName")
-                .Append(ETP("place", "name")).AppendLine(" AS placeName");
+                .AppendLine(",")
+                .Append(ETP("archive", "id", "name"))
+                .AppendLine(",")
+                .Append(ETP("actType", "name")).Append(" AS actTypeName").AppendLine(",")
+                .Append(ETP("actSubtype", "name")).Append(" AS actSubtypeName").AppendLine(",")
+                .Append(ETP("family", "name")).Append(" AS familyName").AppendLine(",")
+                .Append(ETP("company", "name")).Append(" AS companyName").AppendLine(",")
+                .Append(ETP("place", "name")).Append(" AS placeName").AppendLine();
 
             sbTot.Append("SELECT COUNT(DISTINCT ")
                  .Append(ETP("item", "id"))
@@ -263,10 +266,10 @@ namespace Census.MySql
             // order by (for page only)
             sbPage.Append("ORDER BY ")
               .Append(ETP("book", "startYear"))
-              .Append(',').AppendLine(ET("companyName"))
-              .Append(',').AppendLine(ET("familyName"))
-              .Append(',').AppendLine(ETP("act", "label"))
-              .Append(ETP("act", "id"));
+              .Append(',').Append(ET("companyName"))
+              .Append(',').Append(ET("familyName"))
+              .Append(',').Append(ETP("act", "label"))
+              .Append(',').AppendLine(ETP("act", "id"));
 
             // paging (for page only)
             AppendPaging(filter, sbPage);
