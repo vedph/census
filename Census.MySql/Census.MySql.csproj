@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFramework>netstandard2.1</TargetFramework>
     <Authors>Daniele Fusi</Authors>
     <Company>Fusi</Company>
     <Product>Census</Product>
@@ -13,6 +13,10 @@
   <ItemGroup>
     <PackageReference Include="Fusi.Tools" Version="1.1.15" />
     <PackageReference Include="MySql.Data" Version="8.0.21" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Census.Core\Census.Core.csproj" />
   </ItemGroup>
 
 </Project>

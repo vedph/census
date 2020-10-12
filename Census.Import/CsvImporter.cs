@@ -1,4 +1,5 @@
-﻿using Census.Ef;
+﻿using Census.Core;
+using Census.Ef;
 using CsvHelper;
 using CsvHelper.Configuration;
 using Fusi.Tools;

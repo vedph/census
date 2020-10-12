@@ -1,6 +1,6 @@
 ﻿using System.Text;
 
-namespace Census.Import
+namespace Census.Core
 {
     public sealed class WhitespaceTextFilter : ITextFilter
     {
@@ -18,7 +18,6 @@ namespace Census.Import
                     if (prevWS) break;
                     sb.Append(' ');
                     prevWS = true;
-                    continue;
                 }
                 else
                 {

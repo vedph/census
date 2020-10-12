@@ -1,4 +1,4 @@
-﻿namespace Census.Import
+﻿namespace Census.Core
 {
     public interface ITextFilter
     {

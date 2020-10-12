@@ -3,16 +3,19 @@ using System;
 using System.Linq;
 using System.Text;
 using System.Globalization;
+using Census.Core;
 
 namespace Census.MySql
 {
     public sealed class MySqlQueryBuilder : ISqlQueryBuilder
     {
         private readonly ISqlTokenHelper _tokenHelper;
+        private readonly ITextFilter _filter;
 
-        public MySqlQueryBuilder()
+        public MySqlQueryBuilder(ITextFilter filter)
         {
             _tokenHelper = new MySqlTokenHelper();
+            _filter = filter;
         }
 
         /// <summary>
@@ -101,12 +104,15 @@ namespace Census.MySql
         private string BuildWhereSql(ActFilter filter)
         {
             StringBuilder sb = new StringBuilder();
-
             sb.AppendLine("WHERE");
+
+            // archive
             if (filter.ArchiveId != 0)
             {
                 sb.Append(ETP("archive", "id")).Append('=').Append(filter.ArchiveId);
             }
+
+            // book
             if (filter.BookId != 0)
             {
                 sb.Append(ETP("act", "bookId")).Append('=').Append(filter.BookId);
@@ -120,7 +126,70 @@ namespace Census.MySql
                 sb.Append(ETP("book", "endYear")).Append("<=").Append(filter.BookYearMax);
             }
 
-            // TODO
+            // act
+            if (!string.IsNullOrEmpty(filter.Description))
+            {
+                sb.Append(ETP("act", "descriptionx"))
+                    .Append(" LIKE '%")
+                    .Append(SqlHelper.SqlEncode(filter.Description))
+                    .Append("%'");
+            }
+            if (filter.ActTypeId != 0)
+            {
+                sb.Append(ETP("act", "typeId")).Append('=').Append(filter.ActTypeId);
+            }
+            if (filter.FamilyId != 0)
+            {
+                sb.Append(ETP("act", "familyId")).Append('=').Append(filter.FamilyId);
+            }
+            if (filter.CompanyId != 0)
+            {
+                sb.Append(ETP("act", "companyId")).Append('=').Append(filter.CompanyId);
+            }
+            if (filter.PlaceId != 0)
+            {
+                sb.Append(ETP("act", "placeId")).Append('=').Append(filter.PlaceId);
+            }
+            if (!string.IsNullOrEmpty(filter.Label))
+            {
+                sb.Append(ETP("act", "labelx"))
+                    .Append(" LIKE '%")
+                    .Append(SqlHelper.SqlEncode(filter.Label))
+                    .Append("%'");
+            }
+
+            // categories
+            if (filter.CategoryIds?.Count > 0)
+            {
+                sb.Append(ETP("actCategory", "categoryId"))
+                  .Append(" IN(")
+                  .Append(string.Join(",",
+                    filter.CategoryIds.Select(n =>
+                        n.ToString(CultureInfo.InvariantCulture))))
+                  .Append(')');
+            }
+
+            // professions
+            if (filter.ProfessionIds?.Count > 0)
+            {
+                sb.Append(ETP("actProfession", "professionId"))
+                  .Append(" IN(")
+                  .Append(string.Join(",",
+                    filter.ProfessionIds.Select(n =>
+                        n.ToString(CultureInfo.InvariantCulture))))
+                  .Append(')');
+            }
+
+            // partners
+            if (filter.PartnerIds?.Count > 0)
+            {
+                sb.Append(ETP("actPartner", "partnerId"))
+                  .Append(" IN(")
+                  .Append(string.Join(",",
+                    filter.PartnerIds.Select(n =>
+                        n.ToString(CultureInfo.InvariantCulture))))
+                  .Append(')');
+            }
 
             return sb.ToString();
         }
@@ -140,7 +209,16 @@ namespace Census.MySql
               .AppendLine();
         }
 
-        public Tuple<string, string> Build(ActFilter filter)
+        /// <summary>
+        /// Builds the SQL code corresponding to the specified filter and
+        /// paging options for a list of acts.
+        /// </summary>
+        /// <param name="filter">The acts filter.</param>
+        /// <returns>
+        /// SQL code for both page and total.
+        /// </returns>
+        /// <exception cref="ArgumentNullException">filter</exception>
+        public Tuple<string, string> BuildGetActs(ActFilter filter)
         {
             if (filter == null)
                 throw new ArgumentNullException(nameof(filter));
@@ -194,6 +272,66 @@ namespace Census.MySql
             AppendPaging(filter, sbPage);
 
             return Tuple.Create(sbPage.ToString(), sbTot.ToString());
+        }
+
+        private static string GetTableName(DataEntityType type)
+        {
+            return new[]
+            {
+                "act",
+                "actType",
+                "actSubtype",
+                "archive",
+                "book",
+                "bookType",
+                "bookSubtype",
+                "category",
+                "company",
+                "family",
+                "person",
+                "place",
+                "profession"
+            }[(int)type];
+        }
+
+        private static string GetTableLookupFieldName(DataEntityType type)
+        {
+            return new[]
+            {
+                "labelx",
+                "namex",
+                "namex",
+                "namex",
+                "locationx",
+                "namex",
+                "namex",
+                "namex",
+                "namex",
+                "namex",
+                "namex",
+                "namex",
+                "namex"
+            }[(int)type];
+        }
+
+        public string BuildLookup(DataEntityType type, string filter, int top)
+        {
+            string filterx = _filter.Apply(filter);
+            string table = GetTableName(type);
+            string field = GetTableLookupFieldName(type);
+
+            StringBuilder sb = new StringBuilder("SELECT ");
+            sb.Append(ET("id"))
+              .Append(',')
+              .Append(ET(field))
+              .Append(" AS n FROM ")
+              .Append(ET(table))
+              .Append(" WHERE ")
+              .Append(ETP(table, field))
+              .Append(" LIKE '%").Append(SqlHelper.SqlEncode(filter))
+              .Append("%' ORDER BY ").Append(ET(field))
+              .Append(" LIMIT ").Append(top).AppendLine(";");
+            return sb.ToString();
         }
     }
 }

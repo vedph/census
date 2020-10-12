@@ -25,6 +25,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Census.Core\Census.Core.csproj" />
     <ProjectReference Include="..\Census.Ef\Census.Ef.csproj" />
   </ItemGroup>
 

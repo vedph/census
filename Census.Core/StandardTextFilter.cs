@@ -1,7 +1,7 @@
 ﻿using Fusi.Text.Unicode;
 using System.Text;
 
-namespace Census.Import
+namespace Census.Core
 {
     /// <summary>
     /// A simple, general purpose text filter for pin values. This preserves
