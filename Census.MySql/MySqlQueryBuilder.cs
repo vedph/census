@@ -339,11 +339,14 @@ namespace Census.MySql
             string filterx = _filter.Apply(filter);
             string table = GetTableName(type);
             string field = GetTableLookupFieldName(type);
+            string displayField = field.EndsWith("x")
+                ? field.Substring(0, field.Length - 1)
+                : field;
 
             StringBuilder sb = new StringBuilder("SELECT DISTINCT ");
             sb.Append(ET("id"))
               .Append(',')
-              .Append(ET(field))
+              .Append(ET(displayField))
               .Append(" AS n FROM ")
               .AppendLine(ET(table));
 
@@ -363,7 +366,7 @@ namespace Census.MySql
                   .Append(SqlHelper.SqlEncode(filterx))
                   .AppendLine("%'");
             }
-            sb.Append("ORDER BY ").Append(ET(field));
+            sb.Append("ORDER BY ").Append(ET(displayField));
 
             if (top > 0) sb.Append(" LIMIT ").Append(top);
             sb.AppendLine(";");
