@@ -43,6 +43,22 @@ namespace Census.Api.Controllers
         }
 
         /// <summary>
+        /// Gets the act with the specified ID.
+        /// </summary>
+        /// <param name="id">The act's identifier.</param>
+        /// <returns>The act details.</returns>
+        [HttpGet("api/acts/{id}")]
+        [ProducesResponseType(200)]
+        [ProducesResponseType(404)]
+        public ActionResult<Act> GetAct([FromRoute] int id)
+        {
+            Act act = _repository.GetAct(id);
+            if (act == null) return NotFound();
+
+            return Ok(act);
+        }
+
+        /// <summary>
         /// Lookup the specified number of items in the specified table.
         /// </summary>
         /// <param name="model">The model.</param>

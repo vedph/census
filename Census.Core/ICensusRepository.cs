@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using Fusi.Tools.Data;
 
 namespace Census.Core
@@ -10,6 +8,7 @@ namespace Census.Core
         DataPage<ActInfo> GetActs(ActFilter filter);
 
         IList<LookupItem> Lookup(DataEntityType type, string filter, int top);
-        // TODO
+
+        Act GetAct(int id);
     }
 }
