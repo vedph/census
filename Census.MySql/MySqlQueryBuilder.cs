@@ -355,10 +355,15 @@ namespace Census.MySql
                     break;
             }
 
-            sb.Append("WHERE ")
-              .Append(ETP(table, field))
-              .Append(" LIKE '%").Append(SqlHelper.SqlEncode(filterx))
-              .Append("%' ORDER BY ").Append(ET(field));
+            if (!string.IsNullOrEmpty(filterx))
+            {
+                sb.Append("WHERE ")
+                  .Append(ETP(table, field))
+                  .Append(" LIKE '%")
+                  .Append(SqlHelper.SqlEncode(filterx))
+                  .AppendLine("%'");
+            }
+            sb.Append("ORDER BY ").Append(ET(field));
 
             if (top > 0) sb.Append(" LIMIT ").Append(top);
             sb.AppendLine(";");
