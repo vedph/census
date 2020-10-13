@@ -10,7 +10,6 @@ namespace Census.Api.Controllers
     /// Census data.
     /// </summary>
     /// <seealso cref="ControllerBase" />
-    [Route("api/[controller]")]
     [ApiController]
     public sealed class CensusController : ControllerBase
     {
