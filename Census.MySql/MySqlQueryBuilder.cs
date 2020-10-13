@@ -306,7 +306,9 @@ namespace Census.MySql
                 "family",
                 "person",
                 "place",
-                "profession"
+                "profession",
+                // virtual
+                "person"
             }[(int)type];
         }
 
@@ -326,6 +328,8 @@ namespace Census.MySql
                 "namex",
                 "namex",
                 "namex",
+                "namex",
+                // virtual
                 "namex"
             }[(int)type];
         }
@@ -336,17 +340,29 @@ namespace Census.MySql
             string table = GetTableName(type);
             string field = GetTableLookupFieldName(type);
 
-            StringBuilder sb = new StringBuilder("SELECT ");
+            StringBuilder sb = new StringBuilder("SELECT DISTINCT ");
             sb.Append(ET("id"))
               .Append(',')
               .Append(ET(field))
               .Append(" AS n FROM ")
-              .Append(ET(table))
-              .Append(" WHERE ")
+              .AppendLine(ET(table));
+
+            switch (type)
+            {
+                case DataEntityType.Partner:
+                    sb.AppendLine("INNER JOIN actPartner ON " +
+                        "person.id=actPartner.partnerId");
+                    break;
+            }
+
+            sb.Append("WHERE ")
               .Append(ETP(table, field))
               .Append(" LIKE '%").Append(SqlHelper.SqlEncode(filterx))
-              .Append("%' ORDER BY ").Append(ET(field))
-              .Append(" LIMIT ").Append(top).AppendLine(";");
+              .Append("%' ORDER BY ").Append(ET(field));
+
+            if (top > 0) sb.Append(" LIMIT ").Append(top);
+            sb.AppendLine(";");
+
             return sb.ToString();
         }
     }

@@ -29,6 +29,8 @@ namespace Census.Core
         Family,
         Person,
         Place,
-        Profession
+        Profession,
+        // virtual
+        Partner
     }
 }

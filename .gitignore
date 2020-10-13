@@ -36,4 +36,4 @@ packages/
 *.csdat
 *.scgdat
 .vs/
-census-log*.txt
+Census.Api/census-log*.txt

@@ -21,6 +21,7 @@ namespace Census.Api.Models
         /// <summary>
         /// Gets or sets the max count of items to be returned.
         /// </summary>
+        [Range(0, 100)]
         public int Limit { get; set; }
     }
 }
