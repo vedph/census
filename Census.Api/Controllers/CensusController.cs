@@ -2,13 +2,14 @@
 using Census.Core;
 using Fusi.Tools.Data;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 
 namespace Census.Api.Controllers
 {
     /// <summary>
     /// Census data.
     /// </summary>
-    /// <seealso cref="Microsoft.AspNetCore.Mvc.ControllerBase" />
+    /// <seealso cref="ControllerBase" />
     [Route("api/[controller]")]
     [ApiController]
     public sealed class CensusController : ControllerBase
@@ -31,15 +32,32 @@ namespace Census.Api.Controllers
         /// Gets the specified page of the list of acts matching the
         /// specified filter.
         /// </summary>
-        /// <param name="filter">The filter.</param>
+        /// <param name="model">The filter model.</param>
         /// <returns>Page.</returns>
         [HttpGet("api/acts")]
         [ProducesResponseType(200)]
         public ActionResult<DataPage<ActInfo>> GetActs(
-            [FromQuery] ActFilterModel filter)
+            [FromQuery] ActFilterModel model)
         {
-            var page = _repository.GetActs(filter.GetFilter(_filter));
+            var page = _repository.GetActs(model.GetFilter(_filter));
             return Ok(page);
+        }
+
+        /// <summary>
+        /// Lookup the specified number of items in the specified table.
+        /// </summary>
+        /// <param name="model">The model.</param>
+        /// <returns>Lookup items.</returns>
+        [HttpGet("api/lookup")]
+        [ProducesResponseType(200)]
+        public ActionResult<IList<LookupItem>> GetLookupItems(
+            [FromQuery] LookupModel model)
+        {
+            IList<LookupItem> result = _repository.Lookup(
+                (DataEntityType)model.TableId,
+                model.Filter,
+                model.Limit);
+            return Ok(result);
         }
     }
 }
