@@ -9,8 +9,7 @@ namespace Census.Core
     {
         DataPage<ActInfo> GetActs(ActFilter filter);
 
-        IList<Tuple<int, string>> Lookup(DataEntityType type, string filter,
-            int top);
+        IList<LookupItem> Lookup(DataEntityType type, string filter, int top);
         // TODO
     }
 }

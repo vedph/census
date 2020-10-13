@@ -20,6 +20,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Census.Core", "Census.Core\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CensusSqlDemo", "CensusSqlDemo\CensusSqlDemo.csproj", "{C637FA64-0C52-4F3B-A23B-610B82985817}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Census.Api", "Census.Api\Census.Api.csproj", "{255AC479-E455-4508-80EA-5B7220304929}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -50,6 +52,10 @@ Global
 		{C637FA64-0C52-4F3B-A23B-610B82985817}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C637FA64-0C52-4F3B-A23B-610B82985817}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C637FA64-0C52-4F3B-A23B-610B82985817}.Release|Any CPU.Build.0 = Release|Any CPU
+		{255AC479-E455-4508-80EA-5B7220304929}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{255AC479-E455-4508-80EA-5B7220304929}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{255AC479-E455-4508-80EA-5B7220304929}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{255AC479-E455-4508-80EA-5B7220304929}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,0 +1,248 @@
+2020-10-13 09:13:12.232 +02:00 [INF] Starting Census API host
+2020-10-13 09:13:12.683 +02:00 [INF] User profile is available. Using 'C:\Users\dfusi\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2020-10-13 09:13:12.861 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2020-10-13 09:13:12.862 +02:00 [INF] Hosting environment: Development
+2020-10-13 09:13:12.862 +02:00 [INF] Content root path: D:\Projects\Core20\Vedph\Census\Census\Census.Api
+2020-10-13 09:13:12.881 +02:00 [INF] Request starting HTTP/2.0 GET https://localhost:44327/weatherforecast  
+2020-10-13 09:13:12.910 +02:00 [INF] Executing endpoint 'Census.Api.Controllers.WeatherForecastController.Get (Census.Api)'
+2020-10-13 09:13:12.937 +02:00 [INF] Route matched with {action = "Get", controller = "WeatherForecast"}. Executing controller action with signature System.Collections.Generic.IEnumerable`1[Census.Api.WeatherForecast] Get() on controller Census.Api.Controllers.WeatherForecastController (Census.Api).
+2020-10-13 09:13:12.944 +02:00 [INF] Executing ObjectResult, writing value of type 'Census.Api.WeatherForecast[]'.
+2020-10-13 09:13:12.976 +02:00 [INF] Executed action Census.Api.Controllers.WeatherForecastController.Get (Census.Api) in 32.412ms
+2020-10-13 09:13:12.979 +02:00 [INF] Executed endpoint 'Census.Api.Controllers.WeatherForecastController.Get (Census.Api)'
+2020-10-13 09:13:12.981 +02:00 [INF] Request finished in 102.1444ms 200 application/json; charset=utf-8
+2020-10-13 09:13:13.258 +02:00 [INF] Request starting HTTP/2.0 GET https://localhost:44327/favicon.ico  
+2020-10-13 09:13:13.276 +02:00 [INF] Request finished in 18.0938ms 404 
+2020-10-13 09:13:18.369 +02:00 [INF] Request starting HTTP/2.0 GET https://localhost:44327/swagger  
+2020-10-13 09:13:18.372 +02:00 [INF] Request finished in 3.226ms 301 
+2020-10-13 09:13:18.376 +02:00 [INF] Request starting HTTP/2.0 GET https://localhost:44327/swagger/index.html  
+2020-10-13 09:13:18.398 +02:00 [INF] Request finished in 21.3828ms 200 text/html;charset=utf-8
+2020-10-13 09:13:18.425 +02:00 [INF] Request starting HTTP/2.0 GET https://localhost:44327/swagger/swagger-ui-bundle.js  
+2020-10-13 09:13:18.425 +02:00 [INF] Request starting HTTP/2.0 GET https://localhost:44327/swagger/swagger-ui-standalone-preset.js  
+2020-10-13 09:13:18.425 +02:00 [INF] Request starting HTTP/2.0 GET https://localhost:44327/swagger/swagger-ui.css  
+2020-10-13 09:13:18.446 +02:00 [INF] Sending file. Request path: '/swagger-ui-standalone-preset.js'. Physical path: 'N/A'
+2020-10-13 09:13:18.446 +02:00 [INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+2020-10-13 09:13:18.446 +02:00 [INF] Sending file. Request path: '/swagger-ui-bundle.js'. Physical path: 'N/A'
+2020-10-13 09:13:18.448 +02:00 [INF] Request finished in 22.7083ms 200 text/css
+2020-10-13 09:13:18.448 +02:00 [INF] Request finished in 22.5403ms 200 application/javascript
+2020-10-13 09:13:18.448 +02:00 [INF] Request finished in 22.7198ms 200 application/javascript
+2020-10-13 09:13:18.630 +02:00 [INF] Request starting HTTP/2.0 GET https://localhost:44327/swagger/v1/swagger.json  
+2020-10-13 09:13:18.655 +02:00 [INF] Request starting HTTP/2.0 GET https://localhost:44327/swagger/favicon-32x32.png  
+2020-10-13 09:13:18.658 +02:00 [INF] Sending file. Request path: '/favicon-32x32.png'. Physical path: 'N/A'
+2020-10-13 09:13:18.658 +02:00 [INF] Request finished in 3.6813ms 200 image/png
+2020-10-13 09:13:18.718 +02:00 [INF] Request finished in 88.6278ms 200 application/json;charset=utf-8
+2020-10-13 09:28:39.231 +02:00 [INF] Starting Census API host
+2020-10-13 09:28:39.431 +02:00 [INF] User profile is available. Using 'C:\Users\dfusi\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2020-10-13 09:28:39.536 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2020-10-13 09:28:39.537 +02:00 [INF] Hosting environment: Development
+2020-10-13 09:28:39.537 +02:00 [INF] Content root path: D:\Projects\Core20\Vedph\Census\Census\Census.Api
+2020-10-13 09:28:39.555 +02:00 [INF] Request starting HTTP/2.0 GET https://localhost:44327/weatherforecast  
+2020-10-13 09:28:39.576 +02:00 [INF] Executing endpoint 'Census.Api.Controllers.WeatherForecastController.Get (Census.Api)'
+2020-10-13 09:28:39.595 +02:00 [INF] Route matched with {action = "Get", controller = "WeatherForecast"}. Executing controller action with signature System.Collections.Generic.IEnumerable`1[Census.Api.WeatherForecast] Get() on controller Census.Api.Controllers.WeatherForecastController (Census.Api).
+2020-10-13 09:28:39.600 +02:00 [INF] Executing ObjectResult, writing value of type 'Census.Api.WeatherForecast[]'.
+2020-10-13 09:28:39.622 +02:00 [INF] Executed action Census.Api.Controllers.WeatherForecastController.Get (Census.Api) in 22.0177ms
+2020-10-13 09:28:39.624 +02:00 [INF] Executed endpoint 'Census.Api.Controllers.WeatherForecastController.Get (Census.Api)'
+2020-10-13 09:28:39.626 +02:00 [INF] Request finished in 72.776ms 200 application/json; charset=utf-8
+2020-10-13 09:28:39.865 +02:00 [INF] Request starting HTTP/2.0 GET https://localhost:44327/favicon.ico  
+2020-10-13 09:28:39.891 +02:00 [INF] Request finished in 25.7041ms 404 
+2020-10-13 09:28:45.561 +02:00 [INF] Request starting HTTP/2.0 GET https://localhost:44327/swagger/index.html  
+2020-10-13 09:28:45.582 +02:00 [INF] Request finished in 22.0361ms 200 text/html;charset=utf-8
+2020-10-13 09:28:45.824 +02:00 [INF] Request starting HTTP/2.0 GET https://localhost:44327/swagger/v1/swagger.json  
+2020-10-13 09:28:45.851 +02:00 [ERR] An unhandled exception has occurred while executing the request.
+Swashbuckle.AspNetCore.SwaggerGen.SwaggerGeneratorException: Ambiguous HTTP method for action - Census.Api.Controllers.CensusController.GetActs (Census.Api). Actions require an explicit HttpMethod binding for Swagger/OpenAPI 3.0
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateOperations(IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GeneratePaths(IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GetSwagger(String documentName, String host, String basePath)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2020-10-13 09:28:45.890 +02:00 [INF] Request finished in 66.1344ms 500 text/plain
+2020-10-13 09:32:17.523 +02:00 [INF] Starting Census API host
+2020-10-13 09:32:17.743 +02:00 [INF] User profile is available. Using 'C:\Users\dfusi\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2020-10-13 09:32:17.857 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2020-10-13 09:32:17.857 +02:00 [INF] Hosting environment: Development
+2020-10-13 09:32:17.857 +02:00 [INF] Content root path: D:\Projects\Core20\Vedph\Census\Census\Census.Api
+2020-10-13 09:32:17.874 +02:00 [INF] Request starting HTTP/2.0 GET https://localhost:44327/swagger/index.html  
+2020-10-13 09:32:17.947 +02:00 [INF] Request finished in 75.1146ms 200 text/html;charset=utf-8
+2020-10-13 09:32:18.230 +02:00 [INF] Request starting HTTP/2.0 GET https://localhost:44327/swagger/v1/swagger.json  
+2020-10-13 09:32:18.347 +02:00 [INF] Request finished in 116.6595ms 200 application/json;charset=utf-8
+2020-10-13 09:37:57.987 +02:00 [INF] Starting Census API host
+2020-10-13 09:37:58.187 +02:00 [INF] User profile is available. Using 'C:\Users\dfusi\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2020-10-13 09:37:58.298 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2020-10-13 09:37:58.299 +02:00 [INF] Hosting environment: Development
+2020-10-13 09:37:58.299 +02:00 [INF] Content root path: D:\Projects\Core20\Vedph\Census\Census\Census.Api
+2020-10-13 09:37:58.316 +02:00 [INF] Request starting HTTP/2.0 GET https://localhost:44327/swagger/index.html  
+2020-10-13 09:37:58.401 +02:00 [INF] Request finished in 86.8206ms 200 text/html;charset=utf-8
+2020-10-13 09:37:58.741 +02:00 [INF] Request starting HTTP/2.0 GET https://localhost:44327/swagger/v1/swagger.json  
+2020-10-13 09:37:58.841 +02:00 [INF] Request finished in 100.1461ms 200 application/json;charset=utf-8
+2020-10-13 09:38:16.700 +02:00 [INF] Request starting HTTP/2.0 GET https://localhost:44327/api/Census/api/acts?pageNumber=1&pageSize=10  
+2020-10-13 09:38:16.703 +02:00 [INF] Executing endpoint 'Census.Api.Controllers.CensusController.GetActs (Census.Api)'
+2020-10-13 09:38:16.734 +02:00 [INF] Route matched with {action = "GetActs", controller = "Census"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult`1[Fusi.Tools.Data.DataPage`1[Census.Core.ActInfo]] GetActs(Census.Api.Models.ActFilterModel) on controller Census.Api.Controllers.CensusController (Census.Api).
+2020-10-13 09:38:17.157 +02:00 [INF] Executed action Census.Api.Controllers.CensusController.GetActs (Census.Api) in 419.307ms
+2020-10-13 09:38:17.160 +02:00 [INF] Executed endpoint 'Census.Api.Controllers.CensusController.GetActs (Census.Api)'
+2020-10-13 09:38:17.162 +02:00 [ERR] An unhandled exception has occurred while executing the request.
+MySql.Data.MySqlClient.MySqlException (0x80004005): Unknown column 'item.id' in 'field list'
+   at MySql.Data.MySqlClient.MySqlStream.ReadPacket()
+   at MySql.Data.MySqlClient.NativeDriver.GetResult(Int32& affectedRow, Int64& insertedId)
+   at MySql.Data.MySqlClient.Driver.GetResult(Int32 statementId, Int32& affectedRows, Int64& insertedId)
+   at MySql.Data.MySqlClient.Driver.NextResult(Int32 statementId, Boolean force)
+   at MySql.Data.MySqlClient.MySqlDataReader.NextResult()
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader(CommandBehavior behavior)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader()
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteScalar()
+   at Census.Ef.CensusRepository.GetActs(ActFilter filter) in D:\Projects\Core20\Vedph\Census\Census\Census.Ef\CensusRepository.cs:line 54
+   at Census.Api.Controllers.CensusController.GetActs(ActFilterModel filter) in D:\Projects\Core20\Vedph\Census\Census\Census.Api\Controllers\CensusController.cs:line 41
+   at lambda_method(Closure , Object , Object[] )
+   at Microsoft.Extensions.Internal.ObjectMethodExecutor.Execute(Object target, Object[] parameters)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.SyncObjectResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeActionMethodAsync()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeNextActionFilterAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|24_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2020-10-13 09:38:17.243 +02:00 [INF] Request finished in 542.4852ms 500 text/plain
+2020-10-13 09:39:39.609 +02:00 [INF] Starting Census API host
+2020-10-13 09:39:40.698 +02:00 [INF] User profile is available. Using 'C:\Users\dfusi\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2020-10-13 09:39:40.973 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2020-10-13 09:39:40.973 +02:00 [INF] Hosting environment: Development
+2020-10-13 09:39:40.973 +02:00 [INF] Content root path: D:\Projects\Core20\Vedph\Census\Census\Census.Api
+2020-10-13 09:39:41.026 +02:00 [INF] Request starting HTTP/2.0 GET https://localhost:44327/swagger/index.html  
+2020-10-13 09:39:41.134 +02:00 [INF] Request finished in 110.426ms 200 text/html;charset=utf-8
+2020-10-13 09:39:41.476 +02:00 [INF] Request starting HTTP/2.0 GET https://localhost:44327/swagger/v1/swagger.json  
+2020-10-13 09:39:41.596 +02:00 [INF] Request finished in 120.2696ms 200 application/json;charset=utf-8
+2020-10-13 09:39:53.810 +02:00 [INF] Request starting HTTP/2.0 GET https://localhost:44327/api/Census/api/acts?pageNumber=1&pageSize=20  
+2020-10-13 09:39:53.812 +02:00 [INF] Executing endpoint 'Census.Api.Controllers.CensusController.GetActs (Census.Api)'
+2020-10-13 09:39:53.850 +02:00 [INF] Route matched with {action = "GetActs", controller = "Census"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult`1[Fusi.Tools.Data.DataPage`1[Census.Core.ActInfo]] GetActs(Census.Api.Models.ActFilterModel) on controller Census.Api.Controllers.CensusController (Census.Api).
+2020-10-13 09:40:52.650 +02:00 [INF] Starting Census API host
+2020-10-13 09:40:53.739 +02:00 [INF] User profile is available. Using 'C:\Users\dfusi\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2020-10-13 09:40:53.984 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2020-10-13 09:40:53.984 +02:00 [INF] Hosting environment: Development
+2020-10-13 09:40:53.984 +02:00 [INF] Content root path: D:\Projects\Core20\Vedph\Census\Census\Census.Api
+2020-10-13 09:40:54.028 +02:00 [INF] Request starting HTTP/2.0 GET https://localhost:44327/swagger/index.html  
+2020-10-13 09:40:54.128 +02:00 [INF] Request finished in 101.6319ms 200 text/html;charset=utf-8
+2020-10-13 09:40:54.429 +02:00 [INF] Request starting HTTP/2.0 GET https://localhost:44327/swagger/v1/swagger.json  
+2020-10-13 09:40:54.585 +02:00 [INF] Request finished in 156.5923ms 200 application/json;charset=utf-8
+2020-10-13 09:47:30.460 +02:00 [INF] Request starting HTTP/2.0 GET https://localhost:44327/api/Census/api/acts?pageNumber=1&pageSize=20  
+2020-10-13 09:47:30.463 +02:00 [INF] Executing endpoint 'Census.Api.Controllers.CensusController.GetActs (Census.Api)'
+2020-10-13 09:47:30.502 +02:00 [INF] Route matched with {action = "GetActs", controller = "Census"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult`1[Fusi.Tools.Data.DataPage`1[Census.Core.ActInfo]] GetActs(Census.Api.Models.ActFilterModel) on controller Census.Api.Controllers.CensusController (Census.Api).
+2020-10-13 09:49:13.522 +02:00 [INF] Starting Census API host
+2020-10-13 09:49:14.592 +02:00 [INF] User profile is available. Using 'C:\Users\dfusi\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2020-10-13 09:49:14.830 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2020-10-13 09:49:14.830 +02:00 [INF] Hosting environment: Development
+2020-10-13 09:49:14.830 +02:00 [INF] Content root path: D:\Projects\Core20\Vedph\Census\Census\Census.Api
+2020-10-13 09:49:14.872 +02:00 [INF] Request starting HTTP/2.0 GET https://localhost:44327/swagger/index.html  
+2020-10-13 09:49:14.972 +02:00 [INF] Request finished in 102.0146ms 200 text/html;charset=utf-8
+2020-10-13 09:49:15.264 +02:00 [INF] Request starting HTTP/2.0 GET https://localhost:44327/swagger/v1/swagger.json  
+2020-10-13 09:49:15.425 +02:00 [INF] Request finished in 160.5241ms 200 application/json;charset=utf-8
+2020-10-13 09:49:34.778 +02:00 [INF] Request starting HTTP/2.0 GET https://localhost:44327/api/Census/api/acts?pageNumber=1&pageSize=20  
+2020-10-13 09:49:34.780 +02:00 [INF] Executing endpoint 'Census.Api.Controllers.CensusController.GetActs (Census.Api)'
+2020-10-13 09:49:34.817 +02:00 [INF] Route matched with {action = "GetActs", controller = "Census"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult`1[Fusi.Tools.Data.DataPage`1[Census.Core.ActInfo]] GetActs(Census.Api.Models.ActFilterModel) on controller Census.Api.Controllers.CensusController (Census.Api).
+2020-10-13 09:50:26.357 +02:00 [INF] Starting Census API host
+2020-10-13 09:50:27.526 +02:00 [INF] User profile is available. Using 'C:\Users\dfusi\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2020-10-13 09:50:27.779 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2020-10-13 09:50:27.779 +02:00 [INF] Hosting environment: Development
+2020-10-13 09:50:27.779 +02:00 [INF] Content root path: D:\Projects\Core20\Vedph\Census\Census\Census.Api
+2020-10-13 09:50:27.819 +02:00 [INF] Request starting HTTP/2.0 GET https://localhost:44327/swagger/index.html  
+2020-10-13 09:50:27.919 +02:00 [INF] Request finished in 102.1802ms 200 text/html;charset=utf-8
+2020-10-13 09:50:28.228 +02:00 [INF] Request starting HTTP/2.0 GET https://localhost:44327/swagger/v1/swagger.json  
+2020-10-13 09:50:28.358 +02:00 [INF] Request finished in 129.5276ms 200 application/json;charset=utf-8
+2020-10-13 09:50:38.132 +02:00 [INF] Request starting HTTP/2.0 GET https://localhost:44327/api/Census/api/acts?pageNumber=1&pageSize=20  
+2020-10-13 09:50:38.135 +02:00 [INF] Executing endpoint 'Census.Api.Controllers.CensusController.GetActs (Census.Api)'
+2020-10-13 09:50:38.174 +02:00 [INF] Route matched with {action = "GetActs", controller = "Census"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult`1[Fusi.Tools.Data.DataPage`1[Census.Core.ActInfo]] GetActs(Census.Api.Models.ActFilterModel) on controller Census.Api.Controllers.CensusController (Census.Api).
+2020-10-13 09:55:20.698 +02:00 [INF] Starting Census API host
+2020-10-13 09:55:21.750 +02:00 [INF] User profile is available. Using 'C:\Users\dfusi\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2020-10-13 09:55:22.089 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2020-10-13 09:55:22.089 +02:00 [INF] Hosting environment: Development
+2020-10-13 09:55:22.089 +02:00 [INF] Content root path: D:\Projects\Core20\Vedph\Census\Census\Census.Api
+2020-10-13 09:55:22.140 +02:00 [INF] Request starting HTTP/2.0 GET https://localhost:44327/swagger/index.html  
+2020-10-13 09:55:22.243 +02:00 [INF] Request finished in 105.8564ms 200 text/html;charset=utf-8
+2020-10-13 09:55:22.546 +02:00 [INF] Request starting HTTP/2.0 GET https://localhost:44327/swagger/v1/swagger.json  
+2020-10-13 09:55:22.668 +02:00 [INF] Request finished in 119.469ms 200 application/json;charset=utf-8
+2020-10-13 09:55:31.449 +02:00 [INF] Request starting HTTP/2.0 GET https://localhost:44327/api/Census/api/acts?pageNumber=1&pageSize=20  
+2020-10-13 09:55:31.451 +02:00 [INF] Executing endpoint 'Census.Api.Controllers.CensusController.GetActs (Census.Api)'
+2020-10-13 09:55:31.489 +02:00 [INF] Route matched with {action = "GetActs", controller = "Census"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult`1[Fusi.Tools.Data.DataPage`1[Census.Core.ActInfo]] GetActs(Census.Api.Models.ActFilterModel) on controller Census.Api.Controllers.CensusController (Census.Api).
+2020-10-13 09:57:08.894 +02:00 [INF] Starting Census API host
+2020-10-13 09:57:09.800 +02:00 [INF] User profile is available. Using 'C:\Users\dfusi\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2020-10-13 09:57:10.138 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2020-10-13 09:57:10.138 +02:00 [INF] Hosting environment: Development
+2020-10-13 09:57:10.138 +02:00 [INF] Content root path: D:\Projects\Core20\Vedph\Census\Census\Census.Api
+2020-10-13 09:57:10.180 +02:00 [INF] Request starting HTTP/2.0 GET https://localhost:44327/swagger/index.html  
+2020-10-13 09:57:10.278 +02:00 [INF] Request finished in 100.2337ms 200 text/html;charset=utf-8
+2020-10-13 09:57:10.569 +02:00 [INF] Request starting HTTP/2.0 GET https://localhost:44327/swagger/v1/swagger.json  
+2020-10-13 09:57:10.686 +02:00 [INF] Request finished in 117.4505ms 200 application/json;charset=utf-8
+2020-10-13 09:57:20.235 +02:00 [INF] Request starting HTTP/2.0 GET https://localhost:44327/api/Census/api/acts?pageNumber=1&pageSize=10  
+2020-10-13 09:57:20.238 +02:00 [INF] Executing endpoint 'Census.Api.Controllers.CensusController.GetActs (Census.Api)'
+2020-10-13 09:57:20.278 +02:00 [INF] Route matched with {action = "GetActs", controller = "Census"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult`1[Fusi.Tools.Data.DataPage`1[Census.Core.ActInfo]] GetActs(Census.Api.Models.ActFilterModel) on controller Census.Api.Controllers.CensusController (Census.Api).
+2020-10-13 10:03:15.230 +02:00 [INF] Starting Census API host
+2020-10-13 10:03:16.479 +02:00 [INF] User profile is available. Using 'C:\Users\dfusi\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2020-10-13 10:03:16.747 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2020-10-13 10:03:16.747 +02:00 [INF] Hosting environment: Development
+2020-10-13 10:03:16.747 +02:00 [INF] Content root path: D:\Projects\Core20\Vedph\Census\Census\Census.Api
+2020-10-13 10:03:16.803 +02:00 [INF] Request starting HTTP/2.0 GET https://localhost:44327/swagger/index.html  
+2020-10-13 10:03:16.910 +02:00 [INF] Request finished in 109.0332ms 200 text/html;charset=utf-8
+2020-10-13 10:03:17.250 +02:00 [INF] Request starting HTTP/2.0 GET https://localhost:44327/swagger/v1/swagger.json  
+2020-10-13 10:03:17.392 +02:00 [INF] Request finished in 142.1134ms 200 application/json;charset=utf-8
+2020-10-13 10:03:25.802 +02:00 [INF] Request starting HTTP/2.0 GET https://localhost:44327/api/Census/api/acts?pageNumber=1&pageSize=20  
+2020-10-13 10:03:25.805 +02:00 [INF] Executing endpoint 'Census.Api.Controllers.CensusController.GetActs (Census.Api)'
+2020-10-13 10:03:25.846 +02:00 [INF] Route matched with {action = "GetActs", controller = "Census"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult`1[Fusi.Tools.Data.DataPage`1[Census.Core.ActInfo]] GetActs(Census.Api.Models.ActFilterModel) on controller Census.Api.Controllers.CensusController (Census.Api).
+2020-10-13 10:04:35.455 +02:00 [INF] Starting Census API host
+2020-10-13 10:04:36.370 +02:00 [INF] User profile is available. Using 'C:\Users\dfusi\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2020-10-13 10:04:36.667 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2020-10-13 10:04:36.667 +02:00 [INF] Hosting environment: Development
+2020-10-13 10:04:36.667 +02:00 [INF] Content root path: D:\Projects\Core20\Vedph\Census\Census\Census.Api
+2020-10-13 10:04:36.725 +02:00 [INF] Request starting HTTP/2.0 GET https://localhost:44327/swagger/index.html  
+2020-10-13 10:04:36.842 +02:00 [INF] Request finished in 120.323ms 200 text/html;charset=utf-8
+2020-10-13 10:04:37.135 +02:00 [INF] Request starting HTTP/2.0 GET https://localhost:44327/swagger/v1/swagger.json  
+2020-10-13 10:04:37.257 +02:00 [INF] Request finished in 122.9963ms 200 application/json;charset=utf-8
+2020-10-13 10:04:46.979 +02:00 [INF] Request starting HTTP/2.0 GET https://localhost:44327/api/Census/api/acts?pageNumber=1&pageSize=20  
+2020-10-13 10:04:46.981 +02:00 [INF] Executing endpoint 'Census.Api.Controllers.CensusController.GetActs (Census.Api)'
+2020-10-13 10:04:47.024 +02:00 [INF] Route matched with {action = "GetActs", controller = "Census"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult`1[Fusi.Tools.Data.DataPage`1[Census.Core.ActInfo]] GetActs(Census.Api.Models.ActFilterModel) on controller Census.Api.Controllers.CensusController (Census.Api).
+2020-10-13 10:05:58.825 +02:00 [INF] Starting Census API host
+2020-10-13 10:06:00.012 +02:00 [INF] User profile is available. Using 'C:\Users\dfusi\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2020-10-13 10:06:00.303 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2020-10-13 10:06:00.304 +02:00 [INF] Hosting environment: Development
+2020-10-13 10:06:00.304 +02:00 [INF] Content root path: D:\Projects\Core20\Vedph\Census\Census\Census.Api
+2020-10-13 10:06:00.348 +02:00 [INF] Request starting HTTP/2.0 GET https://localhost:44327/swagger/index.html  
+2020-10-13 10:06:00.458 +02:00 [INF] Request finished in 112.726ms 200 text/html;charset=utf-8
+2020-10-13 10:06:00.805 +02:00 [INF] Request starting HTTP/2.0 GET https://localhost:44327/swagger/v1/swagger.json  
+2020-10-13 10:06:00.943 +02:00 [INF] Request finished in 138.4472ms 200 application/json;charset=utf-8
+2020-10-13 10:06:11.246 +02:00 [INF] Request starting HTTP/2.0 GET https://localhost:44327/api/Census/api/acts?pageNumber=1&pageSize=20  
+2020-10-13 10:06:11.248 +02:00 [INF] Executing endpoint 'Census.Api.Controllers.CensusController.GetActs (Census.Api)'
+2020-10-13 10:06:11.287 +02:00 [INF] Route matched with {action = "GetActs", controller = "Census"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult`1[Fusi.Tools.Data.DataPage`1[Census.Core.ActInfo]] GetActs(Census.Api.Models.ActFilterModel) on controller Census.Api.Controllers.CensusController (Census.Api).
+2020-10-13 10:07:45.218 +02:00 [INF] Starting Census API host
+2020-10-13 10:07:46.456 +02:00 [INF] User profile is available. Using 'C:\Users\dfusi\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2020-10-13 10:07:46.712 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2020-10-13 10:07:46.712 +02:00 [INF] Hosting environment: Development
+2020-10-13 10:07:46.712 +02:00 [INF] Content root path: D:\Projects\Core20\Vedph\Census\Census\Census.Api
+2020-10-13 10:07:46.761 +02:00 [INF] Request starting HTTP/2.0 GET https://localhost:44327/swagger/index.html  
+2020-10-13 10:07:46.869 +02:00 [INF] Request finished in 109.568ms 200 text/html;charset=utf-8
+2020-10-13 10:07:47.217 +02:00 [INF] Request starting HTTP/2.0 GET https://localhost:44327/swagger/v1/swagger.json  
+2020-10-13 10:07:47.345 +02:00 [INF] Request finished in 128.1789ms 200 application/json;charset=utf-8
+2020-10-13 10:08:01.314 +02:00 [INF] Request starting HTTP/2.0 GET https://localhost:44327/api/Census/api/acts?pageNumber=1&pageSize=20  
+2020-10-13 10:08:01.317 +02:00 [INF] Executing endpoint 'Census.Api.Controllers.CensusController.GetActs (Census.Api)'
+2020-10-13 10:08:01.355 +02:00 [INF] Route matched with {action = "GetActs", controller = "Census"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult`1[Fusi.Tools.Data.DataPage`1[Census.Core.ActInfo]] GetActs(Census.Api.Models.ActFilterModel) on controller Census.Api.Controllers.CensusController (Census.Api).
+2020-10-13 10:12:12.487 +02:00 [INF] Starting Census API host
+2020-10-13 10:12:13.740 +02:00 [INF] User profile is available. Using 'C:\Users\dfusi\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2020-10-13 10:12:14.002 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2020-10-13 10:12:14.003 +02:00 [INF] Hosting environment: Development
+2020-10-13 10:12:14.003 +02:00 [INF] Content root path: D:\Projects\Core20\Vedph\Census\Census\Census.Api
+2020-10-13 10:12:14.047 +02:00 [INF] Request starting HTTP/2.0 GET https://localhost:44327/swagger/index.html  
+2020-10-13 10:12:14.156 +02:00 [INF] Request finished in 110.8041ms 200 text/html;charset=utf-8
+2020-10-13 10:12:14.455 +02:00 [INF] Request starting HTTP/2.0 GET https://localhost:44327/swagger/v1/swagger.json  
+2020-10-13 10:12:14.581 +02:00 [INF] Request finished in 125.5591ms 200 application/json;charset=utf-8
+2020-10-13 10:12:23.423 +02:00 [INF] Request starting HTTP/2.0 GET https://localhost:44327/api/Census/api/acts?pageNumber=1&pageSize=20  
+2020-10-13 10:12:23.428 +02:00 [INF] Executing endpoint 'Census.Api.Controllers.CensusController.GetActs (Census.Api)'
+2020-10-13 10:12:23.463 +02:00 [INF] Route matched with {action = "GetActs", controller = "Census"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult`1[Fusi.Tools.Data.DataPage`1[Census.Core.ActInfo]] GetActs(Census.Api.Models.ActFilterModel) on controller Census.Api.Controllers.CensusController (Census.Api).
+2020-10-13 10:12:46.576 +02:00 [INF] Executing ObjectResult, writing value of type 'Fusi.Tools.Data.DataPage`1[[Census.Core.ActInfo, Census.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2020-10-13 10:12:46.604 +02:00 [INF] Executed action Census.Api.Controllers.CensusController.GetActs (Census.Api) in 23136.7124ms
+2020-10-13 10:12:46.606 +02:00 [INF] Executed endpoint 'Census.Api.Controllers.CensusController.GetActs (Census.Api)'
+2020-10-13 10:12:46.606 +02:00 [INF] Request finished in 23183.3591ms 200 application/json; charset=utf-8

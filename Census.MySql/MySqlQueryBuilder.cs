@@ -251,14 +251,14 @@ namespace Census.MySql
                 .AppendLine(",")
                 .Append(ETP("archive", "id")).Append(" AS archiveId").AppendLine(",")
                 .Append(ETP("archive", "name")).Append(" AS archiveName").AppendLine(",")
-                .Append(ETP("actType", "name")).Append(" AS actTypeName").AppendLine(",")
-                .Append(ETP("actSubtype", "name")).Append(" AS actSubtypeName").AppendLine(",")
+                .Append(ETP("actType", "name")).Append(" AS typeName").AppendLine(",")
+                .Append(ETP("actSubtype", "name")).Append(" AS subtypeName").AppendLine(",")
                 .Append(ETP("family", "name")).Append(" AS familyName").AppendLine(",")
                 .Append(ETP("company", "name")).Append(" AS companyName").AppendLine(",")
                 .Append(ETP("place", "name")).Append(" AS placeName").AppendLine();
 
             sbTot.Append("SELECT COUNT(DISTINCT ")
-                 .Append(ETP("item", "id"))
+                 .Append(ETP("act", "id"))
                  .AppendLine(")");
 
             // from ... join ...
