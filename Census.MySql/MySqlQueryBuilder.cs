@@ -94,11 +94,11 @@ namespace Census.MySql
             if (filter.ArchiveId != 0)
             {
                 sb.AppendLine("INNER JOIN book ON act.bookId=book.id")
-                  .Append("INNER JOIN archive ON book.archiveId=archive.id");
+                  .AppendLine("INNER JOIN archive ON book.archiveId=archive.id");
             }
             else if (filter.BookYearMin != 0 || filter.BookYearMax != 0)
             {
-                sb.Append("INNER JOIN book ON act.bookId=book.id");
+                sb.AppendLine("INNER JOIN book ON act.bookId=book.id");
             }
         }
 
