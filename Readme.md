@@ -11,15 +11,13 @@ Import data from a set of Excel files into a MySql database.
 Syntax:
 
 ```ps1
-.\CensusTool.exe import InputDir FilesMask DBName [-d]
+.\CensusTool.exe import InputDir FilesMask DBName
 ```
-
-Where `-d`=dry, i.e. do not import but just test the procedure. Remove the option to effectively import data.
 
 Sample:
 
 ```ps1
-.\CensusTool.exe import C:\Users\Dfusi\Desktop\Census\ *.tsv census -d
+.\CensusTool.exe import C:\Users\Dfusi\Desktop\Census\ *.tsv census
 ```
 
 Tip: to truncate tables without deleting the DB:

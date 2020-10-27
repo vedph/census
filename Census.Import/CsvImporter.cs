@@ -24,11 +24,6 @@ namespace Census.Import
         private readonly char[] _otherSeps;
 
         /// <summary>
-        /// Gets or sets a value indicating whether dry run is enabled.
-        /// </summary>
-        public bool IsDryRunEnabled { get; set; }
-
-        /// <summary>
         /// Gets or sets the logger.
         /// </summary>
         public ILogger Logger { get; set; }
@@ -97,6 +92,7 @@ namespace Census.Import
                     Namex = namex
                 };
                 db.Archives.Add(archive);
+                db.SaveChanges();
             }
 
             LogMaxLengthErrors(archive);
@@ -138,6 +134,7 @@ namespace Census.Import
                     Namex = namex
                 };
                 db.Families.Add(family);
+                db.SaveChanges();
             }
 
             LogMaxLengthErrors(family);
@@ -158,6 +155,7 @@ namespace Census.Import
                     Namex = namex
                 };
                 db.ActTypes.Add(type);
+                db.SaveChanges();
             }
 
             LogMaxLengthErrors(type);
@@ -181,6 +179,7 @@ namespace Census.Import
                     ActTypeId = actTypeId
                 };
                 db.ActSubtypes.Add(sub);
+                db.SaveChanges();
             }
 
             LogMaxLengthErrors(sub);
@@ -201,6 +200,7 @@ namespace Census.Import
                     Namex = namex
                 };
                 db.BookTypes.Add(type);
+                db.SaveChanges();
             }
 
             LogMaxLengthErrors(type);
@@ -224,6 +224,7 @@ namespace Census.Import
                     BookTypeId = bookTypeId
                 };
                 db.BookSubtypes.Add(sub);
+                db.SaveChanges();
             }
 
             LogMaxLengthErrors(sub);
@@ -245,6 +246,7 @@ namespace Census.Import
                     Namex = namex
                 };
                 db.Companies.Add(company);
+                db.SaveChanges();
             }
 
             if (!string.IsNullOrEmpty(prevName))
@@ -260,6 +262,7 @@ namespace Census.Import
                         Namex = namex
                     };
                     db.Companies.Add(prevCompany);
+                    db.SaveChanges();
                 }
                 LogMaxLengthErrors(prevCompany);
                 company.Previous = prevCompany;
@@ -283,6 +286,7 @@ namespace Census.Import
                     Namex = namex
                 };
                 db.Places.Add(place);
+                db.SaveChanges();
             }
 
             LogMaxLengthErrors(place);
@@ -303,6 +307,7 @@ namespace Census.Import
                     Namex = namex
                 };
                 db.Persons.Add(person);
+                db.SaveChanges();
             }
 
             LogMaxLengthErrors(person);
@@ -329,6 +334,8 @@ namespace Census.Import
                     Name = name,
                     Namex = namex
                 };
+                db.Categories.Add(category);
+                db.SaveChanges();
             }
 
             LogMaxLengthErrors(category);
@@ -357,6 +364,8 @@ namespace Census.Import
                     Name = name,
                     Namex = namex
                 };
+                db.Professions.Add(profession);
+                db.SaveChanges();
             }
 
             LogMaxLengthErrors(profession);
@@ -439,24 +448,25 @@ namespace Census.Import
                 // act type
                 EfActType actType = GetActType(
                     Filter(record.ActType, "-"), db);
-                // book type
+
+                // book type and subtype
                 EfBookType bookType = GetBookType(
                     Filter(record.BookType, "-"), db);
-
-                // we must now immediately save, as we depend on these
-                // for book's and subtypes identification
-                if (!IsDryRunEnabled) db.SaveChanges();
+                EfBookSubtype bookSubtype = GetBookSubtype(
+                    Filter(record.BookSubtype, "-"), bookType.Id, db);
+                // book write place and writer
+                EfPlace bookWritePlace = GetPlace(
+                    Filter(record.BookPlace, null), db);
+                EfPerson bookWriter = GetPerson(
+                    Filter(record.BookWriter, null), db);
 
                 // book
                 EfBook book = GetBook(archive.Id,
                     Filter(record.Location, ""), db);
                 book.Type = bookType;
-                book.Subtype = GetBookSubtype(
-                    Filter(record.BookSubtype, "-"), bookType.Id, db);
-                book.WritePlace =
-                    GetPlace(Filter(record.BookPlace, null), db);
-                book.Writer =
-                    GetPerson(Filter(record.BookWriter, null), db);
+                book.Subtype = bookSubtype;
+                book.WritePlace = bookWritePlace;
+                book.Writer = bookWriter;
                 book.Description = Filter(record.BookDescription, null);
                 book.Descriptionx = Filterx(record.BookDescription, null);
                 book.Incipit = Filter(record.BookIncipit, null);
@@ -466,6 +476,7 @@ namespace Census.Import
                 book.Note = Filter(record.BookNote, null);
                 book.File = Filter(record.BookFile, null);
                 LogMaxLengthErrors(book);
+                db.SaveChanges();
 
                 // act
                 EfAct act = new EfAct
@@ -540,7 +551,7 @@ namespace Census.Import
 
                 LogMaxLengthErrors(act);
 
-                if (!IsDryRunEnabled) db.SaveChanges();
+                db.SaveChanges();
 
                 if (cancel.IsCancellationRequested) return;
                 if (progress != null && ++report.Count % 10 == 0)

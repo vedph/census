@@ -20,10 +20,9 @@ namespace CensusTool.Commands
         private readonly string _inputDir;
         private readonly string _fileMask;
         private readonly string _dbName;
-        private readonly bool _dry;
 
         public ImportCommand(AppOptions options, string inputDir,
-            string fileMask, string dbName, bool dry)
+            string fileMask, string dbName)
         {
             if (options == null)
                 throw new ArgumentNullException(nameof(options));
@@ -35,8 +34,6 @@ namespace CensusTool.Commands
                 throw new ArgumentNullException(nameof(fileMask));
             _dbName = dbName ??
                 throw new ArgumentNullException(nameof(dbName));
-
-            _dry = dry;
         }
 
         public static void Configure(CommandLineApplication command,
@@ -52,17 +49,13 @@ namespace CensusTool.Commands
             CommandArgument dbNameArgument = command.Argument("[db-name]",
                 "The target database name");
 
-            CommandOption dryOption = command.Option("-d|--dry",
-                "Dry run", CommandOptionType.NoValue);
-
             command.OnExecute(() =>
             {
                 options.Command = new ImportCommand(
                     options,
                     inputDirArgument.Value,
                     fileMaskArgument.Value,
-                    dbNameArgument.Value,
-                    dryOption.HasValue());
+                    dbNameArgument.Value);
                 return 0;
             });
         }
@@ -75,8 +68,7 @@ namespace CensusTool.Commands
             Console.WriteLine(
                 $"Input dir: {_inputDir}\n" +
                 $"Input mask: {_fileMask}\n" +
-                $"DB name: {_dbName}\n" +
-                $"Dry run: {(_dry ? "yes" : "no")}\n");
+                $"DB name: {_dbName}\n");
 
             ILoggerFactory loggerFactory = new LoggerFactory();
             loggerFactory.AddSerilog(Log.Logger);
@@ -85,7 +77,6 @@ namespace CensusTool.Commands
             string cs = string.Format(csTemplate, _dbName);
             CsvImporter importer = new CsvImporter(cs)
             {
-                IsDryRunEnabled = _dry,
                 Logger = loggerFactory.CreateLogger("import")
             };
 
