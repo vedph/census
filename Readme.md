@@ -1,6 +1,6 @@
 # Census
 
-Quick Docker image build: `docker build . -t vedph2020/census_api:1.0.2 -t vedph2020/census_api:latest` (replace with the current version).
+Quick Docker image build: `docker build . -t vedph2020/census_api:1.0.3 -t vedph2020/census_api:latest` (replace with the current version).
 
 Tools for importing and remodeling Census data.
 

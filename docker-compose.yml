@@ -23,7 +23,7 @@ services:
       - census-network
 
   census-api:
-    image: vedph2020/census_api:1.0.2
+    image: vedph2020/census_api:1.0.3
     ports:
       # https://stackoverflow.com/questions/48669548/why-does-aspnet-core-start-on-port-80-from-within-docker
       - 54753:80

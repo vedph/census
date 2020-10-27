@@ -192,14 +192,14 @@ namespace Census.MySql
             if (filter.ProfessionIds?.Count > 0)
             {
                 if (sb.Length > 0) sb.Append(" AND ");
-                AppendActInSql(filter.CategoryIds, "actProfession", "professionId", sb);
+                AppendActInSql(filter.ProfessionIds, "actProfession", "professionId", sb);
             }
 
             // partners
             if (filter.PartnerIds?.Count > 0)
             {
                 if (sb.Length > 0) sb.Append(" AND ");
-                AppendActInSql(filter.CategoryIds, "actPartner", "partnerId", sb);
+                AppendActInSql(filter.PartnerIds, "actPartner", "partnerId", sb);
             }
 
             sb.Insert(0, "WHERE" + Environment.NewLine);
