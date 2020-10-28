@@ -15,6 +15,7 @@ using Serilog.Events;
 using Serilog.Exceptions;
 using Census.Ef;
 using Census.Core;
+using System.Linq;
 
 namespace Census.Api
 {
@@ -43,15 +44,23 @@ namespace Census.Api
 
         private void ConfigureCorsServices(IServiceCollection services)
         {
+            string[] origins = new[] { "http://localhost:4200" };
+
+            IConfigurationSection section = Configuration.GetSection("AllowedOrigins");
+            if (section.Exists())
+            {
+                origins = section.AsEnumerable()
+                    .Where(p => !string.IsNullOrEmpty(p.Value))
+                    .Select(o => o.Value).ToArray();
+            }
+
             services.AddCors(o => o.AddPolicy("CorsPolicy", builder =>
             {
                 builder.AllowAnyMethod()
                     .AllowAnyHeader()
                     // https://github.com/aspnet/SignalR/issues/2110 for AllowCredentials
                     .AllowCredentials()
-                    .WithOrigins("http://localhost:4200",
-                                 "http://www.fusisoft.it/",
-                                 "https://www.fusisoft.it/");
+                    .WithOrigins(origins);
             }));
         }
 
