@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Fusi.Text" Version="1.1.12" />
-    <PackageReference Include="Fusi.Tools" Version="1.1.15" />
+    <PackageReference Include="Fusi.Text" Version="1.1.13" />
+    <PackageReference Include="Fusi.Tools" Version="1.1.16" />
   </ItemGroup>
 </Project>

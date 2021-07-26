@@ -11,8 +11,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Fusi.Tools" Version="1.1.15" />
-    <PackageReference Include="MySql.Data" Version="8.0.22" />
+    <PackageReference Include="Fusi.Tools" Version="1.1.16" />
+    <PackageReference Include="MySql.Data" Version="8.0.26" />
   </ItemGroup>
 
   <ItemGroup>
